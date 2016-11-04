@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>我在这里</title>
+  <subtitle>传说中的软件工程师</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://zhishuo.info/"/>
+  <updated>2016-11-04T06:10:29.000Z</updated>
+  <id>http://zhishuo.info/</id>
+  
+  <author>
+    <name>klaus</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用hexo生成博客在github js css 404解决方案</title>
+    <link href="http://zhishuo.info/2016/11/04/%E4%BD%BF%E7%94%A8hexo%E7%94%9F%E6%88%90%E5%8D%9A%E5%AE%A2%E5%9C%A8github-js-css-404%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://zhishuo.info/2016/11/04/使用hexo生成博客在github-js-css-404解决方案/</id>
+    <published>2016-11-04T05:32:58.000Z</published>
+    <updated>2016-11-04T06:10:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>博主最近又开始写博客了，发现使用hexo next 主题，上传到github上之后，所有的vendors文件夹下的资源访问404，博主查了一些资料没有解决，故给github官方写了一封邮件，官方这样回复</p>
+<blockquote>
+<p>Thanks for reaching out! We recently updated to Jekyll v3.3, which ignores the vendor folder by default. If you’re not using Jekyll, you can add a .nojekyll file to the root of your repository to disable Jekyll from building your site. Once you do that, your site should build with your vendor folder.</p>
+</blockquote>
+<p>所以根据提示，在要目录下建立.nojekyll文件即可恢复正常，另外在hexo里，如果把文件放在source目录下，不会被生成到public目录中，根据github上网友的提示，把.nojekyll文件放在hexo主目录.deploy_git/ 文件夹下即可正常使用hexo d 上传，并且此文件也会上传到根目录。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;博主最近又开始写博客了，发现使用hexo next 主题，上传到github上之后，所有的vendors文件夹下的资源访问404，博主查了一
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读spring源码深度解析(二)</title>
+    <link href="http://zhishuo.info/2016/03/09/%E8%AF%BBspring%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90(%E4%BA%8C)/"/>
+    <id>http://zhishuo.info/2016/03/09/读spring源码深度解析(二)/</id>
+    <published>2016-03-09T09:16:21.000Z</published>
+    <updated>2016-11-03T09:11:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><em>不明白</em></strong><br><code>DefaultListableBeanFactory.java</code>中使用了<code>AccessController.doPrivileged()</code>方法，个人理解此方法好像是以当前上下文执行一些代码。<br><code>javaUtilOptionalClass</code>这个属性，是用了JDK8的<code>java.util.Optional</code>,此类是用来避免在Java中出现各种null的问题,但不知道为什么是写在了静态代码块中，而且是以动态加载的方式来加载的。</p>
+<p><strong><em>初始类</em></strong><br>从<code>DefaultListableBeanFactory.java</code>类的getBean()中，开始对整个工厂类进分析。</p>
+<p><img src="http://imkratos.github.io/img/DefaultListableBeanFactory.png" alt="类的关系调用图"></p>
+<p>静态导入，如果你多次用到某个工具类的静态方法，可以使用静态导入，这样使代码更整洁美观。<br><code>SimpleAliasRegistry.java</code>这个类实现了对Alias的一些操作。<br><code>BeanFactory.java</code>接口定义一些对Bean的基本操作。<br><code>DefaultSingletonBeanRegistry.java</code>对spring对Bean的一些操作做了各种封装，创建，消毁，依赖等。<br><code>AbstractAutowireCapableBeanFactory.java</code>对<code>AutowireCapableBeanFactory</code>定义的方法进行了实现，此类<br><code>XmlBeanDefinitionReader.java</code>实现了用xml解析资源文件，并且实现了<code>DefaultListableBeanFactory.java</code>类</p>
+<a id="more"></a>
+<p>xml如果要使用DTD文件来验证的话，需要在xml文件头中加入<code>&lt;!-- DOCTYPE</code></p>
+<p>在解析DTD和XSD时，使用的是不同的机制，如果是DTD的话，会直接取到systemid在当前目录下寻找，如果是xsd时，会在META/schemas中找到对应的systemid</p>
+<p>在解析xml时，如果设置了ResourceLoader，就使用用户设置的，如果没有设置，就使用默认的ResourceEntityResolver解析，解析Xml是使用的SAX方法解析，解析出来Document之后，会把Document进行解析，进行Bean的注册。</p>
+<p>在注册的时候，使用了一个class类的cast方法，感觉这个方法使用的比较好，以前没有见过这种强制转换类型的使用，使用的<code>DefaultBeanDefinitionDocumentReader.java</code>来注册Bean，这里注册Bean的那些Map，是使用的<code>SimpleBeanDefinitionRegistry.java</code>类，如果没有指定应该是<code>DefaultSingletonBeanRegistry.java</code>?,注册的时候还会返回此次注册的类的数量。<br>创建这个对象XmlReaderContext不知道是什么作用，里面是对XmlBeanDefinitionReader的一些封装，解析的时候还留了一前一后，供子类自己实现。<code>DefaultBeanDefinitionDocumentReader.java</code>中是对xml的解析，先根据标签来，然后再解析其中所有的属性，把xml组装成Java对象<code>GenericBeanDefinition.java</code></p>
+<p>解析Bean标签过程，获取id和name，如果没有指定id，就用name做这个类的key<br>检查类名的唯一性<br>判断此xml是否配置了一系列Spring的属性，并且在对应的Java对象中，设置对应的属性。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;em&gt;不明白&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;&lt;code&gt;DefaultListableBeanFactory.java&lt;/code&gt;中使用了&lt;code&gt;AccessController.doPrivileged()&lt;/code&gt;方法，个人理解此方法好像是以当前上下文执行一些代码。&lt;br&gt;&lt;code&gt;javaUtilOptionalClass&lt;/code&gt;这个属性，是用了JDK8的&lt;code&gt;java.util.Optional&lt;/code&gt;,此类是用来避免在Java中出现各种null的问题,但不知道为什么是写在了静态代码块中，而且是以动态加载的方式来加载的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;初始类&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;从&lt;code&gt;DefaultListableBeanFactory.java&lt;/code&gt;类的getBean()中，开始对整个工厂类进分析。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://imkratos.github.io/img/DefaultListableBeanFactory.png&quot; alt=&quot;类的关系调用图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;静态导入，如果你多次用到某个工具类的静态方法，可以使用静态导入，这样使代码更整洁美观。&lt;br&gt;&lt;code&gt;SimpleAliasRegistry.java&lt;/code&gt;这个类实现了对Alias的一些操作。&lt;br&gt;&lt;code&gt;BeanFactory.java&lt;/code&gt;接口定义一些对Bean的基本操作。&lt;br&gt;&lt;code&gt;DefaultSingletonBeanRegistry.java&lt;/code&gt;对spring对Bean的一些操作做了各种封装，创建，消毁，依赖等。&lt;br&gt;&lt;code&gt;AbstractAutowireCapableBeanFactory.java&lt;/code&gt;对&lt;code&gt;AutowireCapableBeanFactory&lt;/code&gt;定义的方法进行了实现，此类&lt;br&gt;&lt;code&gt;XmlBeanDefinitionReader.java&lt;/code&gt;实现了用xml解析资源文件，并且实现了&lt;code&gt;DefaultListableBeanFactory.java&lt;/code&gt;类&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+    
+    
+      <category term="spring" scheme="http://zhishuo.info/tags/spring/"/>
+    
+      <category term="spring源码" scheme="http://zhishuo.info/tags/spring%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阅读ActiveMQ源码总结</title>
+    <link href="http://zhishuo.info/2016/01/07/%E9%98%85%E8%AF%BBActiveMQ%E6%BA%90%E7%A0%81%E6%80%BB%E7%BB%93/"/>
+    <id>http://zhishuo.info/2016/01/07/阅读ActiveMQ源码总结/</id>
+    <published>2016-01-07T14:06:48.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>下载源码<code>git clone https://github.com/apache/activemq.git</code></li>
+<li>使用maven编译源码并且下载依赖<code>mvn clean install</code></li>
+<li>导入到开发工具eclipse<code>mvn eclipse:eclipse</code> 或者idea <code>mvn idea:idea</code></li>
+<li>默认会去maven中央仓库下载jar包，如果下载速度慢可以翻墙或者改成开源中国的镜像仓库<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>CN<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSChina Central<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.oschina.net/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
+<li>idea导入之后无任何显示，事实证明楼主太着急，等编译之后就有了。。</li>
+</ul>
+<h3 id="客户端启动"><a href="#客户端启动" class="headerlink" title="客户端启动"></a>客户端启动</h3><ul>
+<li>java客户端代码我是按照《Java消息服务》这本书中的例子完成的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chat</span> <span class="keyword">implements</span> <span class="title">javax</span>.<span class="title">jms</span>.<span class="title">MessageListener</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> TopicSession pubSession;</div><div class="line">	<span class="keyword">private</span> TopicPublisher publisher;</div><div class="line">	<span class="keyword">private</span> TopicConnection connection;</div><div class="line">	<span class="keyword">private</span> String username;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> topicFactory</div><div class="line">	 * <span class="doctag">@param</span> topicName</div><div class="line">	 * <span class="doctag">@param</span> username</div><div class="line">	 * <span class="doctag">@throws</span> Exception</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Chat</span><span class="params">(String topicFactory,String topicName,String username)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		<span class="comment">//使用JNDI？</span></div><div class="line">		InitialContext ctx = <span class="keyword">new</span> InitialContext();</div><div class="line">		<span class="comment">//拿到工场</span></div><div class="line">		TopicConnectionFactory conFactory = (TopicConnectionFactory)ctx.lookup(topicFactory);</div><div class="line">		<span class="comment">//创建连接</span></div><div class="line">		TopicConnection connection = conFactory.createTopicConnection();</div><div class="line"></div><div class="line">		TopicSession pubSession = connection.createTopicSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</div><div class="line">		TopicSession subSession = connection.createTopicSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</div><div class="line"></div><div class="line">		Topic chatTopic = (Topic)ctx.lookup(topicName);</div><div class="line"></div><div class="line">		TopicPublisher publisher = pubSession.createPublisher(chatTopic);</div><div class="line">		String selector = <span class="string">"username=zhishuo"</span>;</div><div class="line">		TopicSubscriber subscriber = subSession.createSubscriber(chatTopic,selector,<span class="keyword">true</span>);</div><div class="line"></div><div class="line">		subscriber.setMessageListener(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.connection = connection;</div><div class="line">		<span class="keyword">this</span>.pubSession = pubSession;</div><div class="line">		<span class="keyword">this</span>.publisher = publisher;</div><div class="line">		<span class="keyword">this</span>.username = username;</div><div class="line">		connection.start();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(Message message)</span> </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			TextMessage textMessage = (TextMessage)message;</div><div class="line">			System.out.println(textMessage.getText());</div><div class="line">			System.out.println(message.getJMSDestination());</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 发送消息</div><div class="line">	 * <span class="doctag">@param</span> text</div><div class="line">	 * <span class="doctag">@throws</span> JMSException</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">writeMessage</span><span class="params">(String text)</span> <span class="keyword">throws</span> JMSException </span>&#123;</div><div class="line">		TextMessage textMessage = pubSession.createTextMessage(username+<span class="string">":"</span>+text);</div><div class="line">		publisher.publish(textMessage);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> JMSException </span>&#123;</div><div class="line">		connection.close();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">if</span>(args.length!=<span class="number">3</span>)&#123;</div><div class="line">				System.out.println(<span class="string">"something is missing"</span>);</div><div class="line">			&#125;</div><div class="line">			<span class="comment">// topicFactory, topicName, username</span></div><div class="line">			Chat chat = <span class="keyword">new</span> Chat(args[<span class="number">0</span>],args[<span class="number">1</span>],args[<span class="number">2</span>]);</div><div class="line">			BufferedReader commondLine = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</div><div class="line"></div><div class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">				String s = commondLine.readLine();</div><div class="line">				<span class="keyword">if</span>(s.equalsIgnoreCase(<span class="string">"exit"</span>))&#123;</div><div class="line">					chat.clone();</div><div class="line">					System.exit(<span class="number">0</span>);</div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					chat.writeMessage(s);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>还需要在classpath中加入<code>jndi.properties</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#配置实现工场</div><div class="line">java.naming.factory.initial=org.apache.activemq.jndi.ActiveMQInitialContextFactory</div><div class="line">#配置activemq地址</div><div class="line">java.naming.provider.url=tcp://localhost:61616</div><div class="line">#这里是配置的安全机制？</div><div class="line">java.naming.security.principal=system</div><div class="line">java.naming.security.credentials=manager</div><div class="line">#订阅主题的名称，可以以逗号,隔开</div><div class="line">connectionFactoryNames=TopicCF</div><div class="line">#topic</div><div class="line">topic.topic1=jms.topic1</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动<code>Chart</code>类main方法时，传入<code>TopicCF topic1 zhishuo</code>这样客户端就可以正常启动，<br>并且发送消息了，如果启动多个客户端，然后按回车发送消息，所有的人都可以看到。</p>
+</li>
+</ul>
+<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><ul>
+<li><code>InitialContext ctx = new InitialContext();</code><br>这里是JMS给出的公用调用方法，new对象时调用了默认的init()方法。<br><code>myProps = (Hashtable&lt;Object,Object&gt;)   ResourceManager.getInitialEnvironment(environment);</code>里面主要是去加载当前环境变量<br>和一些JVM设置的环境变量参数。</li>
+<li>主要初始化都在<code>getDefaultInitCtx()---&gt;NamingManager.getInitialContext(myProps);</code><br>中完成，会在环境变量配置参数中找到<code>String INITIAL_CONTEXT_FACTORY = &quot;java.naming.factory.initial&quot;;</code><br>key值，由于我们这里配置的是<code>java.naming.factory.initial=org.apache.activemq.jndi.ActiveMQInitialContextFactory</code>，所以实例化的也就是<code>ActiveMQInitialcontextFactory</code>，最后再调用<code>ActiveMQInitialcontextFactory.getInitialContext(env)</code>这里传过去的参数是环境变量。</li>
+<li>我们来到<code>ActiveMQInitialcontextFactory.getInitialContext(env)</code>方法中，此方法便是真正用来初始化队列，<br>主题<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Context <span class="title">getInitialContext</span><span class="params">(Hashtable environment)</span> <span class="keyword">throws</span> NamingException </span>&#123;</div><div class="line">       <span class="comment">// lets create a factory</span></div><div class="line">       Map&lt;String, Object&gt; data = <span class="keyword">new</span> ConcurrentHashMap&lt;String, Object&gt;();</div><div class="line">       String[] names = getConnectionFactoryNames(environment);</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; names.length; i++) &#123;</div><div class="line">           ActiveMQConnectionFactory factory = <span class="keyword">null</span>;</div><div class="line">           String name = names[i];</div><div class="line"></div><div class="line">           <span class="keyword">try</span> &#123;</div><div class="line">               factory = createConnectionFactory(name, environment);</div><div class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NamingException(<span class="string">"Invalid broker URL"</span>);</div><div class="line"></div><div class="line">           &#125;</div><div class="line">           <span class="comment">/*</span></div><div class="line">            * if( broker==null ) &#123; try &#123; broker = factory.getEmbeddedBroker(); &#125;</div><div class="line">            * catch (JMSException e) &#123; log.warn("Failed to get embedded</div><div class="line">            * broker", e); &#125; &#125;</div><div class="line">            */</div><div class="line">           data.put(name, factory); <span class="comment">// 实际上是 tocipIF ActiveMQConnectionFactory</span></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       createQueues(data, environment);</div><div class="line">       createTopics(data, environment);</div><div class="line">       <span class="comment">/*</span></div><div class="line">        * if (broker != null) &#123; data.put("destinations",</div><div class="line">        * broker.getDestinationContext(environment)); &#125;</div><div class="line">        */</div><div class="line">       data.put(<span class="string">"dynamicQueues"</span>, <span class="keyword">new</span> LazyCreateContext() &#123;</div><div class="line">           <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">6503881346214855588L</span>;</div><div class="line"></div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">protected</span> Object <span class="title">createEntry</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">               <span class="keyword">return</span> <span class="keyword">new</span> ActiveMQQueue(name);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line">       data.put(<span class="string">"dynamicTopics"</span>, <span class="keyword">new</span> LazyCreateContext() &#123;</div><div class="line">           <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">2019166796234979615L</span>;</div><div class="line"></div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">protected</span> Object <span class="title">createEntry</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">               <span class="keyword">return</span> <span class="keyword">new</span> ActiveMQTopic(name);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line"></div><div class="line">       <span class="keyword">return</span> createContext(environment, data);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>getConnectionFactoryNames</code>方法中，是为了遍历并且初始化<code>connectionFactoryNames</code>配置的Value值，我们这里配置的<code>connectionFactoryNames=TopicCF</code>，这里用到了<code>StringTokenizer</code>感觉很好用，平时自己都是用string的split，没想到还有这种用法。<br>然后遍历刚才解析的Value值，并且最终创建<code>ActiveMQConnectionFactory</code>对象返回。<br>把创建好的对像放入Hashmap中，map.put(TopicCF,ActiveMQConnectionFactory)，</p>
+<blockquote>
+<p>failover://tcp://localhost:61616 这是此对象初始化时url属性的默认值<br>初始化的时候修改成了tcp://localhost:61616</p>
+</blockquote>
+<p>这里是每一个value值都对应一个自己的工厂类。</p>
+<p>接下来创建Queues和Topics查找配置文件中以queue.和topic.开头的，并且生成ActiveMQQueue对象。<br>我们这里配置的<code>jms.topic1</code>最后也放入map.put(topic1,ActiveMQTopic)。</p>
+<p>接下来创建了动态的队列和主题，不知何用。<br>dynamicQueues<br>dynamicTopics<br>并且都放入了map<br>最后创建了ReadOnlyContext对象，并且把相关的数据绑定都传入其中。<br>至此第一句代码初始化完成。</p>
+<ul>
+<li><p><code>(TopicConnectionFactory)ctx.lookup(topicFactory)</code>这里是去加载实现工厂的类，由于上一个初始化最终返回的是<br>ReadOnlyContext对象，所以这里调用的是ReadOnlyContext.lookup方法，我们来看<code>public Object lookup(String name) throws NamingException {</code>方法，这里其实就是根据传入的名称，取出相应的工厂，由于我们在启动时传入的工厂类名是<br>TopicCF 所以，这里就是取出刚才放入的ActiveMQConnectionFactory工厂类，类图如下<br><img src="http://imkratos.github.io/img/ActiveMQConnectionFactory%E7%B1%BB%E5%9B%BE.png" alt="类图"></p>
+</li>
+<li><p><code>conFactory.createTopicConnection()</code>，这里是调用的ActiveMQConnectionFactory中的方法，该类中初始化了传输协议模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (scheme.equals(<span class="string">"auto"</span>)) &#123;</div><div class="line">    connectBrokerUL = <span class="keyword">new</span> URI(brokerURL.toString().replace(<span class="string">"auto"</span>, <span class="string">"tcp"</span>));</div><div class="line"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (scheme.equals(<span class="string">"auto+ssl"</span>)) &#123;</div><div class="line">    connectBrokerUL = <span class="keyword">new</span> URI(brokerURL.toString().replace(<span class="string">"auto+ssl"</span>, <span class="string">"ssl"</span>));</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (scheme.equals(<span class="string">"auto+nio"</span>)) &#123;</div><div class="line">    connectBrokerUL = <span class="keyword">new</span> URI(brokerURL.toString().replace(<span class="string">"auto+nio"</span>, <span class="string">"nio"</span>));</div><div class="line"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (scheme.equals(<span class="string">"auto+nio+ssl"</span>)) &#123;</div><div class="line">    connectBrokerUL = <span class="keyword">new</span> URI(brokerURL.toString().replace(<span class="string">"auto+nio+ssl"</span>, <span class="string">"nio+ssl"</span>));</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果以上都没有配置，默认使用TCP协议传输，在<code>TransportFactory.connect()--&gt;findTransportFactory()</code>中，查找资源对应的配置协议，如果没有查到，使用默认的在<br><code>private static final FactoryFinder TRANSPORT_FACTORY_FINDER = new FactoryFinder(&quot;META-INF/services/org/apache/activemq/transport/&quot;);</code>此文件目录中，因为这里是用的<code>tcp://localhost:61616</code>所以这里使用的就是<code>META-INF/services/org/apache/activemq/transport/tcp</code>文件，此文件中实际配置的是TCP的传输器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class=org.apache.activemq.transport.tcp.TcpTransportFactory</div></pre></td></tr></table></figure></p>
+<p>然后调TcpTransportFactory.doConnect()进行连接，至此传输器创建完成。</p>
+<ul>
+<li>接下来创建ActiveMQConnection连接</li>
+<li><p>最后启动连接，并且设置一些默认值，至此创建连接完成，并返回连接。</p>
+</li>
+<li><p><code>TopicSession pubSession = connection.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);</code>创建发布和订阅Session，<br>最终调用的是ActiveMQConnection.createTopicSession()，创建ActiveMQSession对像并返回。</p>
+</li>
+<li><p><code>Topic chatTopic = (Topic)ctx.lookup(topicName);</code>加载主题，这里的值为<code>topic1</code>，<br>因为在前边初始化的时候已经放入了对像，所以这里的值为<code>ActiveMQTopic</code>，调用ActiveMQSession.createPublisher() 和 createSubscriber() 创建发布者ActiveMQTopicPublisher和消费者ActiveMQTopicSubscriber。</p>
+</li>
+<li><p>创建完成之后，把自己设置为订阅者的监听器，最终启动连接，客户端启动代码分析完成，因为有一些自己也不是很理解，所以未能表达。</p>
+</li>
+</ul>
+<h3 id="服务端启动"><a href="#服务端启动" class="headerlink" title="服务端启动"></a>服务端启动</h3><ul>
+<li>以下是服务端启动的类图调用关系:<br><img src="http://imkratos.github.io/img/active_server_start_seq.png" alt="启动类图"></li>
+</ul>
+<p><em>这里还了解了java -D 是可以把一些参数设置到JVM中的</em></p>
+<p>服务端启动这里充分体现了命令设计模式的案例，我认为是很好的学习例子，最终调用的是StartCommand.runTask()方法，类中有如下几个重要功能</p>
+<ul>
+<li>初始化broker</li>
+<li>添加JVM shutdownhook 停止时进行清理</li>
+</ul>
+<p>下面来看<code>broker = BrokerFactory.createBroker(configURI);</code>此类中在创建工厂时也使用了文件配置的方法由于默认是使用的<code>xbean:activemq.xml</code>资源文件，所以在创建工厂时就是实例化的<br><code>META-INF/services/org/apache/activemq/broker/</code>xbean文件中配置的类，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class=org.apache.activemq.xbean.XBeanBrokerFactory</div></pre></td></tr></table></figure></p>
+<p>实际调用的是<code>XBeanBrokerFactory.createBroker()</code>此类中创建了Spring的<code>ResourceXmlApplicationContext</code>实现对象，但不知这里为何要这样。这里最后还调用了spring框架中refresh方法，此方法会初始化spring整个框架。<br>最终创建一个BrokerService返回，broker中包含了所有上下文环境。</p>
+<p>KahaDBPersistenceAdapter 调用关系图<br><img src="http://imkratos.github.io/img/active_db_ref.png" alt="调用关系"></p>
+<p>KahaDBPersistenceAdapter 用例图</p>
+<p><img src="http://imkratos.github.io/img/active_server_db_ref.png" alt="调用关系"><br>最后启动，至此服务启动完成。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;下载源码&lt;code&gt;git clone https://github.com/apache/activemq.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用maven编译源码并且下载依赖&lt;code&gt;mvn clean install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;导入到开发工具eclipse&lt;code&gt;mvn eclipse:eclipse&lt;/code&gt; 或者idea &lt;code&gt;mvn idea:idea&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;默认会去maven中央仓库下载jar包，如果下载速度慢可以翻墙或者改成开源中国的镜像仓库&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;mirrors&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;mirror&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;CN&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;OSChina Central&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;url&lt;/span&gt;&amp;gt;&lt;/span&gt;http://maven.oschina.net/content/groups/public/&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;url&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;mirrorOf&lt;/span&gt;&amp;gt;&lt;/span&gt;central&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;mirrorOf&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;mirror&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;mirrors&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+    
+      <category term="ActiveMQ" scheme="http://zhishuo.info/tags/ActiveMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>archLinux安装遇到的问题</title>
+    <link href="http://zhishuo.info/2015/12/24/archLinux%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://zhishuo.info/2015/12/24/archLinux安装遇到的问题/</id>
+    <published>2015-12-24T12:25:32.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>pacman -Syy 更新之后才能用</li>
+<li>启动ssh服务需要安装openssh,<code>pacman -S openssh</code></li>
+<li>启动sshd服务<code>systemctl start sshd</code></li>
+<li>设置为开机启动服务<code>systemctl enable sshd.service</code></li>
+<li>安装vim之后，显示libncursesw.so.6不能找到，运行<code>pacman -Syu</code>升级即可<a id="more"></a>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;pacman -Syy 更新之后才能用&lt;/li&gt;
+&lt;li&gt;启动ssh服务需要安装openssh,&lt;code&gt;pacman -S openssh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;启动sshd服务&lt;code&gt;systemctl start sshd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置为开机启动服务&lt;code&gt;systemctl enable sshd.service&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装vim之后，显示libncursesw.so.6不能找到，运行&lt;code&gt;pacman -Syu&lt;/code&gt;升级即可
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
+    
+      <category term="arch" scheme="http://zhishuo.info/tags/arch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读activeMQ源码(一)</title>
+    <link href="http://zhishuo.info/2015/12/09/%E8%AF%BBactiveMQ%E6%BA%90%E7%A0%81(%E4%B8%80)/"/>
+    <id>http://zhishuo.info/2015/12/09/读activeMQ源码(一)/</id>
+    <published>2015-12-08T16:54:49.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近的学习到了消息的阶段，查了下网上的资料，并没有很多具体介绍某一个消息中间件的源码是如何实现，帮自己下了源码想分析下去，希望能坚持。</p>
+<p>源码<a href="https://github.com/apache/activemq.git" target="_blank" rel="external">GIT下载地址</a></p>
+<p>下载完之后如果要导入eclipse 执行mvn eclipse:eclipse 或者导入IDEA mvn idea:idea</p>
+<p>说下个人对rpc和消息的理解:</p>
+<ul>
+<li>这2种方式从架构上就是不同的，rpc一般都是同步的，消息都是异步的，用在不同的场景上。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近的学习到了消息的阶段，查了下网上的资料，并没有很多具体介绍某一个消息中间件的源码是如何实现，帮自己下了源码想分析下去，希望能坚持。&lt;/p&gt;
+&lt;p&gt;源码&lt;a href=&quot;https://github.com/apache/activemq.git&quot; target=&quot;_bl
+    
+    </summary>
+    
+      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+    
+      <category term="activemq" scheme="http://zhishuo.info/tags/activemq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac树莓派安装kaliLinux</title>
+    <link href="http://zhishuo.info/2015/12/04/mac%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85kaliLinux/"/>
+    <id>http://zhishuo.info/2015/12/04/mac树莓派安装kaliLinux/</id>
+    <published>2015-12-04T13:13:51.000Z</published>
+    <updated>2016-11-03T09:11:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>树莓派到手大概有一周了，想折腾下kali linux，记录下安装步骤。</p>
+<p>准备工作，必须品：</p>
+<ol>
+<li>树莓派板子一个</li>
+<li>5V电源一个</li>
+<li>8G SD卡一张</li>
+<li>kali linux img <a href="https://www.offensive-security.com/kali-linux-vmware-arm-image-download/" target="_blank" rel="external">下载地址</a> 选择 “RaspberryPi 2” 版本即可</li>
+<li>无线网卡或者网线</li>
+<li>显示屏</li>
+</ol>
+<h3 id="windows安装"><a href="#windows安装" class="headerlink" title="windows安装"></a>windows安装</h3><p>怎样在Windows下将Kali安装到SD卡上</p>
+<ul>
+<li>下载普通版的树莓派专用Kali Linux，并解压img。</li>
+<li>下载名为Win32DiskImager的压缩包并解压其中exe后缀的软件。<br>将SD卡插入你的PC中（记得用读卡器）。</li>
+<li>双击打开Win32DiskImager.exe，如果你用的是WIN7或WIN8，则需要点击鼠标右键并选择“以管理员身份运行”。</li>
+<li>如果该软件无法自动侦测到你的SD卡，你就要在右上角的下拉菜单中找到SD卡并手动选择它。</li>
+<li>在软件的图像文件部分点击小文件夹的图标，找到你刚刚下载的Raspbian.img文件。</li>
+<li>点击“写入 or write”按键，Win32DiskImager就会帮你完成其它步骤。安装过程结束后，你就可以拔出SD卡然后将其插入树莓派了。</li>
+</ul>
+<h3 id="mac-or-linux-安装"><a href="#mac-or-linux-安装" class="headerlink" title="mac or linux 安装"></a>mac or linux 安装</h3><p>怎样在OSX下将Kali安装到SD卡上</p>
+<ul>
+<li>下载普通版的树莓派专用Kali Linux，并解压img。</li>
+<li>SD卡插入电脑</li>
+<li>使用<code>df -h</code> 命令查看你插入的SD卡，一般类似 <code>/dev/disk0s4</code> 每个人的机器数字是不一样的</li>
+<li>使用<code>diskutil list</code>查看SD卡的名字，一般类似  <code>/dev/disk4</code></li>
+<li>然后使用<code>diskutil unmount /dev/disk0s4</code> 命令，卸载已经挂载的SD卡</li>
+<li>使用<code>diskutil list</code>查看是否已经卸载，并使用<code>sudo dd bs=4m if=kali-linux.img(这里是你解压img的名字) of=/dev/rdisk2(这里是你SD卡的位置)</code></li>
+<li>写入完成就可以了，然后执行<code>diskutil unmountDisk /dev/disk2</code>推出SD卡。！！！这一步一定要执行，否则可能不会正常开机。你就可以拔出SD卡然后将其插入树莓派了。</li>
+</ul>
+<h3 id="树莓派开机"><a href="#树莓派开机" class="headerlink" title="树莓派开机"></a>树莓派开机</h3><ul>
+<li>插入SD卡后可正常开机，kali linux 默认用户名密码 root toor 一定要自行修改，否则很可能会被人猜出来的。</li>
+</ul>
+<h3 id="说下坑"><a href="#说下坑" class="headerlink" title="说下坑"></a>说下坑</h3><ul>
+<li>我查了网上各种资料，都没有给出IMG的下载地址，官网的armhf不能用好么，查了查文档也没找到在哪写的armhf和armel的区别。最终使用了上面我给出的下载地址，下完之后才可以用。</li>
+<li>还有，下载之后要验证一下和官网的验证值是否一致，否则有可能自己就成了老黑客的肉鸡，验证方式下载网站已经给出。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;树莓派到手大概有一周了，想折腾下kali linux，记录下安装步骤。&lt;/p&gt;
+&lt;p&gt;准备工作，必须品：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;树莓派板子一个&lt;/li&gt;
+&lt;li&gt;5V电源一个&lt;/li&gt;
+&lt;li&gt;8G SD卡一张&lt;/li&gt;
+&lt;li&gt;kali linux img &lt;a hr
+    
+    </summary>
+    
+      <category term="树莓派" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+    
+      <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
+    
+      <category term="树莓派" scheme="http://zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="kali" scheme="http://zhishuo.info/tags/kali/"/>
+    
+      <category term="mac" scheme="http://zhishuo.info/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派ntp时间同步问题</title>
+    <link href="http://zhishuo.info/2015/11/30/%E6%A0%91%E8%8E%93%E6%B4%BEntp%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/"/>
+    <id>http://zhishuo.info/2015/11/30/树莓派ntp时间同步问题/</id>
+    <published>2015-11-30T14:48:37.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天刚到手树莓派，看了下时间，于是上网搜了下时间同步的问题。<br>然而我按照网上修改的同步服务器并不能解决问题，于是自己试着改了一下。</p>
+<p>前提：你要选择正确了时区，运行<code>sudo raspi-config</code> 选择第4项，回车，继续选择第2个，回车，然后选择Aisa，回车，再次选择重庆或者上海，这样时区就调整好了。<br>网上大部分都说在<code>/etc/ntpd.conf</code> 下</p>
+<p><code>server 0.debain.pool.ntp.org iburst</code></p>
+<p><code>server 1.debain.pool.ntp.org iburst</code></p>
+<p><code>server 2.debain.pool.ntp.org iburst</code></p>
+<p><code>server 3.debain.pool.ntp.org iburst</code></p>
+<p>调整服务器为<code>server asia.pool.ntp.org iburst</code>，我自己试了并不可以，于是我参考了一下我的Mac，用了苹果的时间同步服务器，最终修改为<code>server time.apple.com iburst</code>然后重启ntp服务<br><code>sudo service ntp restart</code>即可。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天刚到手树莓派，看了下时间，于是上网搜了下时间同步的问题。&lt;br&gt;然而我按照网上修改的同步服务器并不能解决问题，于是自己试着改了一下。&lt;/p&gt;
+&lt;p&gt;前提：你要选择正确了时区，运行&lt;code&gt;sudo raspi-config&lt;/code&gt; 选择第4项，回车，继续选择第2
+    
+    </summary>
+    
+      <category term="树莓派" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+    
+      <category term="树莓派" scheme="http://zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="ntp同步" scheme="http://zhishuo.info/tags/ntp%E5%90%8C%E6%AD%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读spring源码深度解析</title>
+    <link href="http://zhishuo.info/2015/11/12/%E8%AF%BBspring%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/"/>
+    <id>http://zhishuo.info/2015/11/12/读spring源码深度解析/</id>
+    <published>2015-11-12T03:35:44.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作也有几年了，以前也尝试过想要读spring源码，但由于前几年没有参考资料，所以很难去理解，最近发现一本<code>spring源码深度解析</code>，怀着试试看的心情，踏上了源码之路。</p>
+<p>记录一下自己遇到的问题，初次读完之后感觉到了spring的强大之处，处处都是设计模式，把代码拆的很分散，但理解上就很难了。</p>
+<ol>
+<li>源码下载，spring最新的git源码地址为<a href="https://github.com/spring-projects/spring-framework.git" target="_blank" rel="external">spring源码</a></li>
+<li>由于spring3.X以后就是使用gradle构建了，所以还需要安装gradle，Mac OS 可以使用HomeBrew brew install gradle 即可</li>
+<li>安装好gradle以后，可以在想要查看的spring项目下执行gradle eclipse 生成eclipse的配置文件</li>
+<li>最后在Eclipse-&gt;import-&gt;existing Eclipse projects进行导入就可以了</li>
+<li>书中有一个查看类实现的接口图，一开始不知道在哪使用，后来发现对着想要查看的类右击，出现选项菜单，点击-&gt;Open Type Hierarchy 即可，默认是显示的子类实现，然后点击上方小图标show the supertype Hierarchy即可</li>
+<li>书中作者看到了哪个类中没有做明确提示，如果找不到需要自行搜索，我用的<a href="https://spring.io/tools" target="_blank" rel="external">STS</a>，commond+shift+l 可按关键字搜索</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作也有几年了，以前也尝试过想要读spring源码，但由于前几年没有参考资料，所以很难去理解，最近发现一本&lt;code&gt;spring源码深度解析&lt;/code&gt;，怀着试试看的心情，踏上了源码之路。&lt;/p&gt;
+&lt;p&gt;记录一下自己遇到的问题，初次读完之后感觉到了spring的强大之处
+    
+    </summary>
+    
+      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+    
+    
+      <category term="spring" scheme="http://zhishuo.info/tags/spring/"/>
+    
+      <category term="spring源码" scheme="http://zhishuo.info/tags/spring%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客提交到搜索引擎</title>
+    <link href="http://zhishuo.info/2014/06/22/hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E5%88%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    <id>http://zhishuo.info/2014/06/22/hexo博客提交到搜索引擎/</id>
+    <published>2014-06-22T02:28:55.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用了hexo搭建博客之后，于是想把博客地址提交到搜索引擎当中，让搜索引擎来收录，在提交搜索引擎的时候遇到了一些问题记录下来。<br>让搜索引擎收录的方式有以下几种:</p>
+<ol>
+<li>提交某个html文件到你的博客根目录下</li>
+<li>添加网站的meta标签</li>
+<li>CNAME方式</li>
+</ol>
+<p>当我使用第1种方式时，发现其实上传的文件是在index文件中包含了进来，所以搜索引擎不会识别，所以使用了第2种方式。<br><a id="more"></a><br>在使用第2种方式时，是需要给index.html添加meta标签，使用hexo的话，如果直接修改.deploy是不可以的，因为执行hexo clean，hexo g两条命令后，是会把文件覆盖的。所以我直接修改了主题中的模板文件，这样在生成index.html的时候就会自动生成进来了。</p>
+<p>修改<code>themes</code>-<code>tyrant</code>-<code>layout</code>-<code>_partial</code>-<code>head.ejs</code>文件把meta内容直接加入head即可。</p>
+<p>ps:<code>tyrant</code>为博主使用的主题，修改时只需要修改自己主题下的此文件即可。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用了hexo搭建博客之后，于是想把博客地址提交到搜索引擎当中，让搜索引擎来收录，在提交搜索引擎的时候遇到了一些问题记录下来。&lt;br&gt;让搜索引擎收录的方式有以下几种:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;提交某个html文件到你的博客根目录下&lt;/li&gt;
+&lt;li&gt;添加网站的meta标签&lt;/li&gt;
+&lt;li&gt;CNAME方式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当我使用第1种方式时，发现其实上传的文件是在index文件中包含了进来，所以搜索引擎不会识别，所以使用了第2种方式。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="搜索引擎" scheme="http://zhishuo.info/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo 搭建 github pages  问题</title>
+    <link href="http://zhishuo.info/2014/05/31/hexo-%E6%90%AD%E5%BB%BA-github-pages--%E9%97%AE%E9%A2%98/"/>
+    <id>http://zhishuo.info/2014/05/31/hexo-搭建-github-pages--问题/</id>
+    <published>2014-05-31T10:45:03.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于自己想搭建一个免费的博客，所以找到了万能的github，但在搭建的过程中遇到了几个小问题，所以记下来<br>基本搭建的方法都是参考于<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">利用github搭建博客</a><br>这个博主已经写的很全了，搭建的过程就不一一提了说下遇到的问题</p>
+<ol>
+<li>hexo上传后博客还是官方的<br>建立了github pages的项目，并且使用了官方的建立建好了一个博客，官方默认会在master分支上开出一个gh-pages分支，然后查了官网资料说所有的内容都是显示gh-pages分支上的，但是我用hexo却传不到gh-pages分支上，并且传到了master分支内容也不会显示，后来找到原因是因为我建立的项目名字不是以#你的github帐户.github.io#命名的，所以会使hexo的上传程序传到master分支上也不会起作用，把项目名修改之后就可以了。<a id="more"></a></li>
+<li>添加多说的问题<br>在官网注册后，复制了多说代码，按<a href="http://www.leejianyang.com/2014/05/25/duoshuo_tutorial/" target="_blank" rel="external">教程</a>做完之后发现多说模块不显示，所以查看了comment.ejs源代码<pre><code>&lt;% if (config.disqus_shortname &amp;&amp; page.comments){ %&gt;
+</code></pre>这里是2个判断，把config.disqus_shortname &amp;&amp; 删掉之后，就可以正常使用了。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于自己想搭建一个免费的博客，所以找到了万能的github，但在搭建的过程中遇到了几个小问题，所以记下来&lt;br&gt;基本搭建的方法都是参考于&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot;&gt;利用github搭建博客&lt;/a&gt;&lt;br&gt;这个博主已经写的很全了，搭建的过程就不一一提了说下遇到的问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hexo上传后博客还是官方的&lt;br&gt;建立了github pages的项目，并且使用了官方的建立建好了一个博客，官方默认会在master分支上开出一个gh-pages分支，然后查了官网资料说所有的内容都是显示gh-pages分支上的，但是我用hexo却传不到gh-pages分支上，并且传到了master分支内容也不会显示，后来找到原因是因为我建立的项目名字不是以#你的github帐户.github.io#命名的，所以会使hexo的上传程序传到master分支上也不会起作用，把项目名修改之后就可以了。
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
+    
+      <category term="github pages" scheme="http://zhishuo.info/tags/github-pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我为什么开始写博客</title>
+    <link href="http://zhishuo.info/2014/05/31/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://zhishuo.info/2014/05/31/我为什么开始写博客/</id>
+    <published>2014-05-31T10:14:02.000Z</published>
+    <updated>2016-11-03T08:10:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近参加了几场印象笔记的活动，听大家分享了一些自己坚持做的事，由于最近自己也在整理自己琐碎的事情，感觉虽然自己在技术上一直在积累但那都是自己的眼光和认识，如果与大家分享出来之后这样可以帮助自己有很大的提升。<br>最近这一年来，在新的公司里自己有了很大的成长，但是发现这些成长记录其实只记录在我的印象笔记里或者是自己的经验上，并没有真正的分享出来，以后在这里记录自己遇到的问题以及一些正在学的技术，自己的理解和学习记录。<br>希望在这里可以记录下自己技术成长的轨迹，以便和大家共同成长。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近参加了几场印象笔记的活动，听大家分享了一些自己坚持做的事，由于最近自己也在整理自己琐碎的事情，感觉虽然自己在技术上一直在积累但那都是自己的眼光和认识，如果与大家分享出来之后这样可以帮助自己有很大的提升。&lt;br&gt;最近这一年来，在新的公司里自己有了很大的成长，但是发现这些成
+    
+    </summary>
+    
+    
+      <category term="博客" scheme="http://zhishuo.info/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+</feed>
