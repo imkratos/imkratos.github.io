@@ -287,7 +287,7 @@
     <link href="http://zhishuo.info/2015/12/04/mac%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85kaliLinux/"/>
     <id>http://zhishuo.info/2015/12/04/mac树莓派安装kaliLinux/</id>
     <published>2015-12-04T13:13:51.000Z</published>
-    <updated>2016-11-03T09:11:23.000Z</updated>
+    <updated>2016-11-08T11:35:36.000Z</updated>
     
     <content type="html"><![CDATA[<p>树莓派到手大概有一周了，想折腾下kali linux，记录下安装步骤。</p>
 <p>准备工作，必须品：</p>
@@ -308,6 +308,7 @@
 <li>在软件的图像文件部分点击小文件夹的图标，找到你刚刚下载的Raspbian.img文件。</li>
 <li>点击“写入 or write”按键，Win32DiskImager就会帮你完成其它步骤。安装过程结束后，你就可以拔出SD卡然后将其插入树莓派了。</li>
 </ul>
+<a id="more"></a>
 <h3 id="mac-or-linux-安装"><a href="#mac-or-linux-安装" class="headerlink" title="mac or linux 安装"></a>mac or linux 安装</h3><p>怎样在OSX下将Kali安装到SD卡上</p>
 <ul>
 <li>下载普通版的树莓派专用Kali Linux，并解压img。</li>
@@ -335,18 +336,30 @@
 &lt;li&gt;树莓派板子一个&lt;/li&gt;
 &lt;li&gt;5V电源一个&lt;/li&gt;
 &lt;li&gt;8G SD卡一张&lt;/li&gt;
-&lt;li&gt;kali linux img &lt;a hr
+&lt;li&gt;kali linux img &lt;a href=&quot;https://www.offensive-security.com/kali-linux-vmware-arm-image-download/&quot;&gt;下载地址&lt;/a&gt; 选择 “RaspberryPi 2” 版本即可&lt;/li&gt;
+&lt;li&gt;无线网卡或者网线&lt;/li&gt;
+&lt;li&gt;显示屏&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;windows安装&quot;&gt;&lt;a href=&quot;#windows安装&quot; class=&quot;headerlink&quot; title=&quot;windows安装&quot;&gt;&lt;/a&gt;windows安装&lt;/h3&gt;&lt;p&gt;怎样在Windows下将Kali安装到SD卡上&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载普通版的树莓派专用Kali Linux，并解压img。&lt;/li&gt;
+&lt;li&gt;下载名为Win32DiskImager的压缩包并解压其中exe后缀的软件。&lt;br&gt;将SD卡插入你的PC中（记得用读卡器）。&lt;/li&gt;
+&lt;li&gt;双击打开Win32DiskImager.exe，如果你用的是WIN7或WIN8，则需要点击鼠标右键并选择“以管理员身份运行”。&lt;/li&gt;
+&lt;li&gt;如果该软件无法自动侦测到你的SD卡，你就要在右上角的下拉菜单中找到SD卡并手动选择它。&lt;/li&gt;
+&lt;li&gt;在软件的图像文件部分点击小文件夹的图标，找到你刚刚下载的Raspbian.img文件。&lt;/li&gt;
+&lt;li&gt;点击“写入 or write”按键，Win32DiskImager就会帮你完成其它步骤。安装过程结束后，你就可以拔出SD卡然后将其插入树莓派了。&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
       <category term="树莓派" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
     
-      <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
-    
       <category term="树莓派" scheme="http://zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
       <category term="kali" scheme="http://zhishuo.info/tags/kali/"/>
+    
+      <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
     
       <category term="mac" scheme="http://zhishuo.info/tags/mac/"/>
     
