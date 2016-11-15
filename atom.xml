@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhishuo.info/"/>
-  <updated>2016-11-15T16:04:08.000Z</updated>
+  <updated>2016-11-15T16:15:54.000Z</updated>
   <id>http://zhishuo.info/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://zhishuo.info/2016/11/15/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN/"/>
     <id>http://zhishuo.info/2016/11/15/hexo博客next主题修改静态资源为CDN/</id>
     <published>2016-11-15T15:55:21.000Z</published>
-    <updated>2016-11-15T16:04:08.000Z</updated>
+    <updated>2016-11-15T16:15:54.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>博主最近看到博客打开速度非常慢，点开chrome的开发者工具查看是由于css,js,图片加载太慢，故<code>css,js</code>换成了国内的cdn，图片换成了<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛云</a>。<br>打开主题配置文件<code>_config.yml</code>以下为修改方式:<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="attr">vendors:</span></div><div class="line">  <span class="comment"># Internal path prefix. Please do not edit it.</span></div><div class="line"><span class="attr">  _internal:</span> vendors</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 2.1.3</span></div><div class="line"><span class="attr">  jquery:</span> //cdn.jsdelivr.net/jquery/<span class="number">2.1</span><span class="number">.3</span>/jquery.min.js</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 2.1.5</span></div><div class="line">  <span class="comment"># Fancybox: http://fancyapps.com/fancybox/</span></div><div class="line"><span class="attr">  fancybox:</span> //cdn.bootcss.com/fancybox/<span class="number">2.1</span><span class="number">.5</span>/jquery.fancybox.pack.js</div><div class="line"><span class="attr">  fancybox_css:</span> //cdn.bootcss.com/fancybox/<span class="number">2.1</span><span class="number">.5</span>/jquery.fancybox.min.css</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.0.6</span></div><div class="line"><span class="attr">  fastclick:</span> //cdn.jsdelivr.net/fastclick/<span class="number">1.0</span><span class="number">.6</span>/fastclick.min.js</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.9.7</span></div><div class="line"><span class="attr">  lazyload:</span> //cdn.jsdelivr.net/jquery.lazyload/<span class="number">1.9</span><span class="number">.3</span>/jquery.lazyload.min.js</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.2.1</span></div><div class="line"><span class="attr">  velocity:</span> //cdn.jsdelivr.net/velocity/<span class="number">1.2</span><span class="number">.3</span>/velocity.min.js</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.2.1</span></div><div class="line"><span class="attr">  velocity_ui:</span> //cdn.jsdelivr.net/velocity/<span class="number">1.2</span><span class="number">.3</span>/velocity.ui.min.js</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 0.7.9</span></div><div class="line"><span class="attr">  ua_parser:</span> //cdn.jsdelivr.net/ua-parser.js/<span class="number">0.7</span><span class="number">.10</span>/ua-parser.min.js</div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 4.4.0</span></div><div class="line">  <span class="comment"># http://fontawesome.io/</span></div><div class="line"><span class="attr">  fontawesome:</span> //cdn.bootcss.com/font-awesome/<span class="number">4.6</span><span class="number">.2</span>/css/font-awesome.min.css</div></pre></td></tr></table></figure></p>
 <p>最终打开时间由原来的20-40s，缩短到现在的5s左右，可能不稳定，但足够了。</p>
@@ -28,6 +28,7 @@
 <ul>
 <li><a href="http://www.bootcdn.cn/" target="_blank" rel="external">http://www.bootcdn.cn/</a></li>
 <li><a href="https://www.staticfile.org/" target="_blank" rel="external">https://www.staticfile.org/</a></li>
+<li><a href="http://cdn.code.baidu.com/" target="_blank" rel="external">http://cdn.code.baidu.com/</a></li>
 </ul>
 ]]></content>
     
@@ -36,6 +37,8 @@
       &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;博主最近看到博客打开速度非常慢，点开chrome的开发者工具查看是由于css,js,图片加载太慢，故&lt;code&gt;css,js&lt;/code&gt;换
     
     </summary>
+    
+      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
     
     
       <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
@@ -51,7 +54,7 @@
     <link href="http://zhishuo.info/2016/11/10/JDK%E6%BA%90%E7%A0%81%E4%B9%8BCopyOnWriteArrayList/"/>
     <id>http://zhishuo.info/2016/11/10/JDK源码之CopyOnWriteArrayList/</id>
     <published>2016-11-10T15:14:52.000Z</published>
-    <updated>2016-11-10T16:06:01.000Z</updated>
+    <updated>2016-11-15T16:16:59.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="什么是CopyOnWriteArrayList"><a href="#什么是CopyOnWriteArrayList" class="headerlink" title="什么是CopyOnWriteArrayList"></a>什么是CopyOnWriteArrayList</h4><p>CopyOnWriteArrayList是一个线程安全的List，和它相同的还有这几个,Vectory,SynchronizedList。<br>它们都是实现了List接口的线程安全类。</p>
 <p>CopyOnWriteArrayList使用的是一种写时复制的算法，也就是说在执行add方法的时候，并不像传统的ArrayList一样在当前数组直接操作，<br>而是在执行add方法的时候，会把原来的数组复制并且长度+1，然后把新值设置到新的数组中，然后把新数组设置为当前使用状态，由于数组是<code>volatile</code>修饰的，所以JVM会自动来保证数组的可见性。</p>
@@ -85,6 +88,8 @@
     
     </summary>
     
+      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+    
     
       <category term="java" scheme="http://zhishuo.info/tags/java/"/>
     
@@ -101,7 +106,7 @@
     <link href="http://zhishuo.info/2016/11/10/hexo-next%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0LeanCloud%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/"/>
     <id>http://zhishuo.info/2016/11/10/hexo-next主题添加LeanCloud统计功能/</id>
     <published>2016-11-10T12:51:47.000Z</published>
-    <updated>2016-11-10T14:46:50.000Z</updated>
+    <updated>2016-11-15T16:16:29.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>网上能查到很多next主题添加LeanCloud主题的方法，但我看都是说在站点的<code>_config.yml</code>中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">leancloud_visitors:</div><div class="line">  enable: true</div><div class="line">  app_id: appid</div><div class="line">  app_key: key</div></pre></td></tr></table></figure></p>
 <p>与是我也在站点的<code>_config.yml</code>中添加了，但不起作用。<br>与是我又去主题的目录中添加了，报错。<br>最后找到原因，是因为主题的<code>_config.yml</code>配置文件中已经自带了，在主题的<code>_config.yml</code>配置文件中308行左右，在这里直接配置即可。</p>
@@ -113,6 +118,8 @@
       &lt;h4 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h4&gt;&lt;p&gt;网上能查到很多next主题添加LeanCloud主题的方法，但我看都是说在站点的&lt;code&gt;_config.yml&lt;
     
     </summary>
+    
+      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
     
     
       <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
@@ -166,7 +173,7 @@
     <link href="http://zhishuo.info/2016/11/04/%E4%BD%BF%E7%94%A8hexo%E7%94%9F%E6%88%90%E5%8D%9A%E5%AE%A2%E5%9C%A8github-js-css-404%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://zhishuo.info/2016/11/04/使用hexo生成博客在github-js-css-404解决方案/</id>
     <published>2016-11-04T05:32:58.000Z</published>
-    <updated>2016-11-07T01:26:55.000Z</updated>
+    <updated>2016-11-15T16:17:18.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>博主最近又开始写博客了，发现使用hexo next 主题，上传到github上之后，所有的vendors文件夹下的资源访问404，博主查了一些资料没有解决，故给github官方写了一封邮件，官方这样回复</p>
 <blockquote>
@@ -181,6 +188,8 @@
       &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;博主最近又开始写博客了，发现使用hexo next 主题，上传到github上之后，所有的vendors文件夹下的资源访问404，博主查了一
     
     </summary>
+    
+      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
     
     
       <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
@@ -328,7 +337,7 @@
     <link href="http://zhishuo.info/2015/12/24/archLinux%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://zhishuo.info/2015/12/24/archLinux安装遇到的问题/</id>
     <published>2015-12-24T12:25:32.000Z</published>
-    <updated>2016-11-03T08:10:39.000Z</updated>
+    <updated>2016-11-15T16:16:21.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>pacman -Syy 更新之后才能用</li>
@@ -350,6 +359,8 @@
 &lt;li&gt;安装vim之后，显示libncursesw.so.6不能找到，运行&lt;code&gt;pacman -Syu&lt;/code&gt;升级即可
     
     </summary>
+    
+      <category term="linux" scheme="http://zhishuo.info/categories/linux/"/>
     
     
       <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
@@ -395,7 +406,7 @@
     <link href="http://zhishuo.info/2015/12/04/mac%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85kaliLinux/"/>
     <id>http://zhishuo.info/2015/12/04/mac树莓派安装kaliLinux/</id>
     <published>2015-12-04T13:13:51.000Z</published>
-    <updated>2016-11-08T11:35:36.000Z</updated>
+    <updated>2016-11-15T16:17:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>树莓派到手大概有一周了，想折腾下kali linux，记录下安装步骤。</p>
 <p>准备工作，必须品：</p>
@@ -461,6 +472,8 @@
     </summary>
     
       <category term="树莓派" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="linux" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/linux/"/>
     
     
       <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
@@ -545,7 +558,7 @@
     <link href="http://zhishuo.info/2014/06/22/hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E5%88%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     <id>http://zhishuo.info/2014/06/22/hexo博客提交到搜索引擎/</id>
     <published>2014-06-22T02:28:55.000Z</published>
-    <updated>2016-11-03T08:10:39.000Z</updated>
+    <updated>2016-11-15T16:16:47.000Z</updated>
     
     <content type="html"><![CDATA[<p>使用了hexo搭建博客之后，于是想把博客地址提交到搜索引擎当中，让搜索引擎来收录，在提交搜索引擎的时候遇到了一些问题记录下来。<br>让搜索引擎收录的方式有以下几种:</p>
 <ol>
@@ -570,6 +583,8 @@
     
     </summary>
     
+      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
+    
     
       <category term="搜索引擎" scheme="http://zhishuo.info/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
@@ -580,7 +595,7 @@
     <link href="http://zhishuo.info/2014/05/31/hexo-%E6%90%AD%E5%BB%BA-github-pages--%E9%97%AE%E9%A2%98/"/>
     <id>http://zhishuo.info/2014/05/31/hexo-搭建-github-pages--问题/</id>
     <published>2014-05-31T10:45:03.000Z</published>
-    <updated>2016-11-03T08:10:39.000Z</updated>
+    <updated>2016-11-15T16:16:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>由于自己想搭建一个免费的博客，所以找到了万能的github，但在搭建的过程中遇到了几个小问题，所以记下来<br>基本搭建的方法都是参考于<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">利用github搭建博客</a><br>这个博主已经写的很全了，搭建的过程就不一一提了说下遇到的问题</p>
 <ol>
@@ -597,6 +612,8 @@
 &lt;li&gt;hexo上传后博客还是官方的&lt;br&gt;建立了github pages的项目，并且使用了官方的建立建好了一个博客，官方默认会在master分支上开出一个gh-pages分支，然后查了官网资料说所有的内容都是显示gh-pages分支上的，但是我用hexo却传不到gh-pages分支上，并且传到了master分支内容也不会显示，后来找到原因是因为我建立的项目名字不是以#你的github帐户.github.io#命名的，所以会使hexo的上传程序传到master分支上也不会起作用，把项目名修改之后就可以了。
     
     </summary>
+    
+      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
     
     
       <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
