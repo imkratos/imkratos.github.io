@@ -259,6 +259,141 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/30/树莓派ntp时间同步问题/" itemprop="url">
+                  树莓派ntp时间同步问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-30T22:48:37+08:00" content="2015-11-30">
+              2015-11-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/30/树莓派ntp时间同步问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/30/树莓派ntp时间同步问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/30/树莓派ntp时间同步问题/" class="leancloud_visitors" data-flag-title="树莓派ntp时间同步问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天刚到手树莓派，看了下时间，于是上网搜了下时间同步的问题。<br>然而我按照网上修改的同步服务器并不能解决问题，于是自己试着改了一下。</p>
+<p>前提：你要选择正确了时区，运行<code>sudo raspi-config</code> 选择第4项，回车，继续选择第2个，回车，然后选择Aisa，回车，再次选择重庆或者上海，这样时区就调整好了。<br>网上大部分都说在<code>/etc/ntpd.conf</code> 下</p>
+<p><code>server 0.debain.pool.ntp.org iburst</code></p>
+<p><code>server 1.debain.pool.ntp.org iburst</code></p>
+<p><code>server 2.debain.pool.ntp.org iburst</code></p>
+<p><code>server 3.debain.pool.ntp.org iburst</code></p>
+<p>调整服务器为<code>server asia.pool.ntp.org iburst</code>，我自己试了并不可以，于是我参考了一下我的Mac，用了苹果的时间同步服务器，最终修改为<code>server time.apple.com iburst</code>然后重启ntp服务<br><code>sudo service ntp restart</code>即可。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/12/读spring源码深度解析/" itemprop="url">
                   读spring源码深度解析
                 </a>
@@ -763,7 +898,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -780,7 +915,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
