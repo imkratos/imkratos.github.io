@@ -96,12 +96,12 @@
 <meta property="og:url" content="http://zhishuo.info/2016/03/09/读spring源码深度解析(二)/index.html">
 <meta property="og:site_name" content="我在这里">
 <meta property="og:description" content="不明白DefaultListableBeanFactory.java中使用了AccessController.doPrivileged()方法，个人理解此方法好像是以当前上下文执行一些代码。javaUtilOptionalClass这个属性，是用了JDK8的java.util.Optional,此类是用来避免在Java中出现各种null的问题,但不知道为什么是写在了静态代码块中，而且是以动态加载的">
-<meta property="og:image" content="http://imkratos.github.io/img/DefaultListableBeanFactory.png">
-<meta property="og:updated_time" content="2016-11-03T09:11:10.000Z">
+<meta property="og:image" content="http://ogflhfadi.bkt.clouddn.com/DefaultListableBeanFactory.png">
+<meta property="og:updated_time" content="2016-11-15T14:51:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读spring源码深度解析(二)">
 <meta name="twitter:description" content="不明白DefaultListableBeanFactory.java中使用了AccessController.doPrivileged()方法，个人理解此方法好像是以当前上下文执行一些代码。javaUtilOptionalClass这个属性，是用了JDK8的java.util.Optional,此类是用来避免在Java中出现各种null的问题,但不知道为什么是写在了静态代码块中，而且是以动态加载的">
-<meta name="twitter:image" content="http://imkratos.github.io/img/DefaultListableBeanFactory.png">
+<meta name="twitter:image" content="http://ogflhfadi.bkt.clouddn.com/DefaultListableBeanFactory.png">
 
 
 
@@ -332,7 +332,7 @@
       
         <p><strong><em>不明白</em></strong><br><code>DefaultListableBeanFactory.java</code>中使用了<code>AccessController.doPrivileged()</code>方法，个人理解此方法好像是以当前上下文执行一些代码。<br><code>javaUtilOptionalClass</code>这个属性，是用了JDK8的<code>java.util.Optional</code>,此类是用来避免在Java中出现各种null的问题,但不知道为什么是写在了静态代码块中，而且是以动态加载的方式来加载的。</p>
 <p><strong><em>初始类</em></strong><br>从<code>DefaultListableBeanFactory.java</code>类的getBean()中，开始对整个工厂类进分析。</p>
-<p><img src="http://imkratos.github.io/img/DefaultListableBeanFactory.png" alt="类的关系调用图"></p>
+<p><img src="http://ogflhfadi.bkt.clouddn.com/DefaultListableBeanFactory.png" alt="类的关系调用图"></p>
 <p>静态导入，如果你多次用到某个工具类的静态方法，可以使用静态导入，这样使代码更整洁美观。<br><code>SimpleAliasRegistry.java</code>这个类实现了对Alias的一些操作。<br><code>BeanFactory.java</code>接口定义一些对Bean的基本操作。<br><code>DefaultSingletonBeanRegistry.java</code>对spring对Bean的一些操作做了各种封装，创建，消毁，依赖等。<br><code>AbstractAutowireCapableBeanFactory.java</code>对<code>AutowireCapableBeanFactory</code>定义的方法进行了实现，此类<br><code>XmlBeanDefinitionReader.java</code>实现了用xml解析资源文件，并且实现了<code>DefaultListableBeanFactory.java</code>类</p>
 <a id="more"></a>
 <p>xml如果要使用DTD文件来验证的话，需要在xml文件头中加入<code>&lt;!-- DOCTYPE</code></p>
@@ -806,6 +806,21 @@
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
