@@ -3,6 +3,30 @@
 
 
     
+  <url>
+    <loc>http://zhishuo.info/2016/11/15/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN/</loc>
+    <lastmod>2016-11-17T14:40:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>hexo博客next主题修改静态资源为CDN</title>
+        <pubTime>2016-11-15T15:55:21.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>next</tag>
+         
+        <tag>cdn</tag>
+         
+         
+           
+             
+              <breadCrumb title="hexo" url="http://zhishuo.info/categories/hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://zhishuo.info/2016/11/10/JDK%E6%BA%90%E7%A0%81%E4%B9%8BCopyOnWriteArrayList/</loc>
@@ -24,30 +48,6 @@
            
              
               <breadCrumb title="java" url="http://zhishuo.info/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zhishuo.info/2016/11/15/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN/</loc>
-    <lastmod>2016-11-16T01:49:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>hexo博客next主题修改静态资源为CDN</title>
-        <pubTime>2016-11-15T15:55:21.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>next</tag>
-         
-        <tag>cdn</tag>
-         
-         
-           
-             
-              <breadCrumb title="hexo" url="http://zhishuo.info/categories/hexo/"/>
           
         </display>
     </data>

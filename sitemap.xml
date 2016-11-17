@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhishuo.info/2016/11/15/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN/</loc>
+    
+    <lastmod>2016-11-17T14:40:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhishuo.info/about/index.html</loc>
     
     <lastmod>2016-11-16T02:15:14.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://zhishuo.info/2016/11/10/JDK%E6%BA%90%E7%A0%81%E4%B9%8BCopyOnWriteArrayList/</loc>
     
     <lastmod>2016-11-16T01:50:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zhishuo.info/2016/11/15/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN/</loc>
-    
-    <lastmod>2016-11-16T01:49:42.000Z</lastmod>
     
   </url>
   
