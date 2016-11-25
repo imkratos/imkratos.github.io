@@ -51,10 +51,10 @@
   
   <entry>
     <title>JDK源码之HashMap</title>
-    <link href="http://zhishuo.info/posts/uncategorized/JDK%E6%BA%90%E7%A0%81%E4%B9%8BHashMap.html"/>
-    <id>http://zhishuo.info/posts/uncategorized/JDK源码之HashMap.html</id>
+    <link href="http://zhishuo.info/posts/java/JDK%E6%BA%90%E7%A0%81%E4%B9%8BHashMap.html"/>
+    <id>http://zhishuo.info/posts/java/JDK源码之HashMap.html</id>
     <published>2016-11-12T07:39:10.000Z</published>
-    <updated>2016-11-23T15:57:20.000Z</updated>
+    <updated>2016-11-25T05:11:26.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="什么是HashMap"><a href="#什么是HashMap" class="headerlink" title="什么是HashMap"></a>什么是HashMap</h4><p>HashMap是一个可以提供O(1)时间复杂度的数据结构，由数组和链表数据结构组成。在对存入的key进行hash之后，然后用hash值在数组上确定一个位置，把value对象以Node节点形式放入到数组的链表当中。</p>
 <p>jdk1.8之后对此做了优化，因为如果发生了数据倾斜，可能会使数组某个下标的Node链表非常长，因为链表查询起来比较慢，所以1.8之后修改了，当Node链表长度大于8时，会把该下标位置的链表数据结构修改为红黑树的结构来保证查询的速度。当数据长度小于8时，会再修改为链表。</p>
@@ -148,6 +148,8 @@
 &lt;p&gt;这里按注释看，应该是HashMap支持的最大长度，如果超过这个值，则使用这个值。&lt;/p&gt;
     
     </summary>
+    
+      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
     
     
       <category term="java" scheme="http://zhishuo.info/tags/java/"/>
