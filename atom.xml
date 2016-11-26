@@ -4,9 +4,9 @@
   <subtitle>传说中的软件工程师</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://zhishuo.info/"/>
+  <link href="http://www.zhishuo.info/"/>
   <updated>2016-11-17T14:40:20.000Z</updated>
-  <id>http://zhishuo.info/</id>
+  <id>http://www.zhishuo.info/</id>
   
   <author>
     <name>klaus</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>hexo博客next主题修改静态资源为CDN</title>
-    <link href="http://zhishuo.info/posts/hexo/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN.html"/>
-    <id>http://zhishuo.info/posts/hexo/hexo博客next主题修改静态资源为CDN.html</id>
+    <link href="http://www.zhishuo.info/posts/hexo/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%B8%BACDN.html"/>
+    <id>http://www.zhishuo.info/posts/hexo/hexo博客next主题修改静态资源为CDN.html</id>
     <published>2016-11-15T15:55:21.000Z</published>
     <updated>2016-11-17T14:40:20.000Z</updated>
     
@@ -38,21 +38,21 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/tags/hexo/"/>
     
-      <category term="next" scheme="http://zhishuo.info/tags/next/"/>
+      <category term="next" scheme="http://www.zhishuo.info/tags/next/"/>
     
-      <category term="cdn" scheme="http://zhishuo.info/tags/cdn/"/>
+      <category term="cdn" scheme="http://www.zhishuo.info/tags/cdn/"/>
     
   </entry>
   
   <entry>
     <title>JDK源码之HashMap</title>
-    <link href="http://zhishuo.info/posts/java/JDK%E6%BA%90%E7%A0%81%E4%B9%8BHashMap.html"/>
-    <id>http://zhishuo.info/posts/java/JDK源码之HashMap.html</id>
+    <link href="http://www.zhishuo.info/posts/java/JDK%E6%BA%90%E7%A0%81%E4%B9%8BHashMap.html"/>
+    <id>http://www.zhishuo.info/posts/java/JDK源码之HashMap.html</id>
     <published>2016-11-12T07:39:10.000Z</published>
     <updated>2016-11-25T05:11:26.000Z</updated>
     
@@ -149,23 +149,23 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/tags/java/"/>
     
-      <category term="jdk源码" scheme="http://zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
+      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
     
-      <category term="hashMap" scheme="http://zhishuo.info/tags/hashMap/"/>
+      <category term="hashMap" scheme="http://www.zhishuo.info/tags/hashMap/"/>
     
-      <category term="map" scheme="http://zhishuo.info/tags/map/"/>
+      <category term="map" scheme="http://www.zhishuo.info/tags/map/"/>
     
   </entry>
   
   <entry>
     <title>JDK源码之CopyOnWriteArrayList</title>
-    <link href="http://zhishuo.info/posts/java/JDK%E6%BA%90%E7%A0%81%E4%B9%8BCopyOnWriteArrayList.html"/>
-    <id>http://zhishuo.info/posts/java/JDK源码之CopyOnWriteArrayList.html</id>
+    <link href="http://www.zhishuo.info/posts/java/JDK%E6%BA%90%E7%A0%81%E4%B9%8BCopyOnWriteArrayList.html"/>
+    <id>http://www.zhishuo.info/posts/java/JDK源码之CopyOnWriteArrayList.html</id>
     <published>2016-11-10T15:14:52.000Z</published>
     <updated>2016-11-16T01:50:25.000Z</updated>
     
@@ -197,23 +197,23 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/tags/java/"/>
     
-      <category term="jdk" scheme="http://zhishuo.info/tags/jdk/"/>
+      <category term="jdk" scheme="http://www.zhishuo.info/tags/jdk/"/>
     
-      <category term="jdk源码" scheme="http://zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
+      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
     
-      <category term="CopyOnWriteArrayList" scheme="http://zhishuo.info/tags/CopyOnWriteArrayList/"/>
+      <category term="CopyOnWriteArrayList" scheme="http://www.zhishuo.info/tags/CopyOnWriteArrayList/"/>
     
   </entry>
   
   <entry>
     <title>hexo next主题添加LeanCloud统计功能</title>
-    <link href="http://zhishuo.info/posts/hexo/hexo-next%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0LeanCloud%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html"/>
-    <id>http://zhishuo.info/posts/hexo/hexo-next主题添加LeanCloud统计功能.html</id>
+    <link href="http://www.zhishuo.info/posts/hexo/hexo-next%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0LeanCloud%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html"/>
+    <id>http://www.zhishuo.info/posts/hexo/hexo-next主题添加LeanCloud统计功能.html</id>
     <published>2016-11-10T12:51:47.000Z</published>
     <updated>2016-11-15T16:16:29.000Z</updated>
     
@@ -228,21 +228,21 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/tags/hexo/"/>
     
-      <category term="next" scheme="http://zhishuo.info/tags/next/"/>
+      <category term="next" scheme="http://www.zhishuo.info/tags/next/"/>
     
-      <category term="leancloud" scheme="http://zhishuo.info/tags/leancloud/"/>
+      <category term="leancloud" scheme="http://www.zhishuo.info/tags/leancloud/"/>
     
   </entry>
   
   <entry>
     <title>mac下使用springli创建springboot应用</title>
-    <link href="http://zhishuo.info/posts/java/mac%E4%B8%8B%E4%BD%BF%E7%94%A8springli%E5%88%9B%E5%BB%BAspringboot%E5%BA%94%E7%94%A8.html"/>
-    <id>http://zhishuo.info/posts/java/mac下使用springli创建springboot应用.html</id>
+    <link href="http://www.zhishuo.info/posts/java/mac%E4%B8%8B%E4%BD%BF%E7%94%A8springli%E5%88%9B%E5%BB%BAspringboot%E5%BA%94%E7%94%A8.html"/>
+    <id>http://www.zhishuo.info/posts/java/mac下使用springli创建springboot应用.html</id>
     <published>2016-11-04T07:53:51.000Z</published>
     <updated>2016-11-04T08:06:35.000Z</updated>
     
@@ -268,19 +268,19 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/tags/java/"/>
     
-      <category term="springboot" scheme="http://zhishuo.info/tags/springboot/"/>
+      <category term="springboot" scheme="http://www.zhishuo.info/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>使用hexo生成博客在github js css 404解决方案</title>
-    <link href="http://zhishuo.info/posts/hexo/%E4%BD%BF%E7%94%A8hexo%E7%94%9F%E6%88%90%E5%8D%9A%E5%AE%A2%E5%9C%A8github-js-css-404%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html"/>
-    <id>http://zhishuo.info/posts/hexo/使用hexo生成博客在github-js-css-404解决方案.html</id>
+    <link href="http://www.zhishuo.info/posts/hexo/%E4%BD%BF%E7%94%A8hexo%E7%94%9F%E6%88%90%E5%8D%9A%E5%AE%A2%E5%9C%A8github-js-css-404%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html"/>
+    <id>http://www.zhishuo.info/posts/hexo/使用hexo生成博客在github-js-css-404解决方案.html</id>
     <published>2016-11-04T05:32:58.000Z</published>
     <updated>2016-11-15T16:17:18.000Z</updated>
     
@@ -298,17 +298,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>读spring源码深度解析(二)</title>
-    <link href="http://zhishuo.info/posts/java/%E8%AF%BBspring%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90(%E4%BA%8C).html"/>
-    <id>http://zhishuo.info/posts/java/读spring源码深度解析(二).html</id>
+    <link href="http://www.zhishuo.info/posts/java/%E8%AF%BBspring%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90(%E4%BA%8C).html"/>
+    <id>http://www.zhishuo.info/posts/java/读spring源码深度解析(二).html</id>
     <published>2016-03-09T09:16:21.000Z</published>
     <updated>2016-11-15T14:51:46.000Z</updated>
     
@@ -333,19 +333,19 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="spring" scheme="http://zhishuo.info/tags/spring/"/>
+      <category term="spring" scheme="http://www.zhishuo.info/tags/spring/"/>
     
-      <category term="spring源码" scheme="http://zhishuo.info/tags/spring%E6%BA%90%E7%A0%81/"/>
+      <category term="spring源码" scheme="http://www.zhishuo.info/tags/spring%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>阅读ActiveMQ源码总结</title>
-    <link href="http://zhishuo.info/posts/java/%E9%98%85%E8%AF%BBActiveMQ%E6%BA%90%E7%A0%81%E6%80%BB%E7%BB%93.html"/>
-    <id>http://zhishuo.info/posts/java/阅读ActiveMQ源码总结.html</id>
+    <link href="http://www.zhishuo.info/posts/java/%E9%98%85%E8%AF%BBActiveMQ%E6%BA%90%E7%A0%81%E6%80%BB%E7%BB%93.html"/>
+    <id>http://www.zhishuo.info/posts/java/阅读ActiveMQ源码总结.html</id>
     <published>2016-01-07T14:06:48.000Z</published>
     <updated>2016-11-15T14:51:07.000Z</updated>
     
@@ -432,19 +432,19 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/tags/java/"/>
     
-      <category term="ActiveMQ" scheme="http://zhishuo.info/tags/ActiveMQ/"/>
+      <category term="ActiveMQ" scheme="http://www.zhishuo.info/tags/ActiveMQ/"/>
     
   </entry>
   
   <entry>
     <title>archLinux安装遇到的问题</title>
-    <link href="http://zhishuo.info/posts/linux/archLinux%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.html"/>
-    <id>http://zhishuo.info/posts/linux/archLinux安装遇到的问题.html</id>
+    <link href="http://www.zhishuo.info/posts/linux/archLinux%E5%AE%89%E8%A3%85%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.html"/>
+    <id>http://www.zhishuo.info/posts/linux/archLinux安装遇到的问题.html</id>
     <published>2015-12-24T12:25:32.000Z</published>
     <updated>2016-11-15T16:16:21.000Z</updated>
     
@@ -469,19 +469,19 @@
     
     </summary>
     
-      <category term="linux" scheme="http://zhishuo.info/categories/linux/"/>
+      <category term="linux" scheme="http://www.zhishuo.info/categories/linux/"/>
     
     
-      <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
+      <category term="linux" scheme="http://www.zhishuo.info/tags/linux/"/>
     
-      <category term="arch" scheme="http://zhishuo.info/tags/arch/"/>
+      <category term="arch" scheme="http://www.zhishuo.info/tags/arch/"/>
     
   </entry>
   
   <entry>
     <title>读activeMQ源码(一)</title>
-    <link href="http://zhishuo.info/posts/java/%E8%AF%BBactiveMQ%E6%BA%90%E7%A0%81(%E4%B8%80).html"/>
-    <id>http://zhishuo.info/posts/java/读activeMQ源码(一).html</id>
+    <link href="http://www.zhishuo.info/posts/java/%E8%AF%BBactiveMQ%E6%BA%90%E7%A0%81(%E4%B8%80).html"/>
+    <id>http://www.zhishuo.info/posts/java/读activeMQ源码(一).html</id>
     <published>2015-12-08T16:54:49.000Z</published>
     <updated>2016-11-03T08:10:39.000Z</updated>
     
@@ -501,19 +501,19 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="java" scheme="http://zhishuo.info/tags/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/tags/java/"/>
     
-      <category term="activemq" scheme="http://zhishuo.info/tags/activemq/"/>
+      <category term="activemq" scheme="http://www.zhishuo.info/tags/activemq/"/>
     
   </entry>
   
   <entry>
     <title>mac树莓派安装kaliLinux</title>
-    <link href="http://zhishuo.info/posts/%E6%A0%91%E8%8E%93%E6%B4%BE/linux/mac%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85kaliLinux.html"/>
-    <id>http://zhishuo.info/posts/树莓派/linux/mac树莓派安装kaliLinux.html</id>
+    <link href="http://www.zhishuo.info/posts/%E6%A0%91%E8%8E%93%E6%B4%BE/linux/mac%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85kaliLinux.html"/>
+    <id>http://www.zhishuo.info/posts/树莓派/linux/mac树莓派安装kaliLinux.html</id>
     <published>2015-12-04T13:13:51.000Z</published>
     <updated>2016-11-15T16:17:10.000Z</updated>
     
@@ -580,25 +580,25 @@
     
     </summary>
     
-      <category term="树莓派" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+      <category term="树莓派" scheme="http://www.zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
-      <category term="linux" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/linux/"/>
+      <category term="linux" scheme="http://www.zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/linux/"/>
     
     
-      <category term="linux" scheme="http://zhishuo.info/tags/linux/"/>
+      <category term="linux" scheme="http://www.zhishuo.info/tags/linux/"/>
     
-      <category term="树莓派" scheme="http://zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+      <category term="树莓派" scheme="http://www.zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
-      <category term="kali" scheme="http://zhishuo.info/tags/kali/"/>
+      <category term="kali" scheme="http://www.zhishuo.info/tags/kali/"/>
     
-      <category term="mac" scheme="http://zhishuo.info/tags/mac/"/>
+      <category term="mac" scheme="http://www.zhishuo.info/tags/mac/"/>
     
   </entry>
   
   <entry>
     <title>树莓派ntp时间同步问题</title>
-    <link href="http://zhishuo.info/posts/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BEntp%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html"/>
-    <id>http://zhishuo.info/posts/树莓派/树莓派ntp时间同步问题.html</id>
+    <link href="http://www.zhishuo.info/posts/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BEntp%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html"/>
+    <id>http://www.zhishuo.info/posts/树莓派/树莓派ntp时间同步问题.html</id>
     <published>2015-11-30T14:48:37.000Z</published>
     <updated>2016-11-03T08:10:39.000Z</updated>
     
@@ -618,19 +618,19 @@
     
     </summary>
     
-      <category term="树莓派" scheme="http://zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+      <category term="树莓派" scheme="http://www.zhishuo.info/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
     
-      <category term="树莓派" scheme="http://zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+      <category term="树莓派" scheme="http://www.zhishuo.info/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
-      <category term="ntp同步" scheme="http://zhishuo.info/tags/ntp%E5%90%8C%E6%AD%A5/"/>
+      <category term="ntp同步" scheme="http://www.zhishuo.info/tags/ntp%E5%90%8C%E6%AD%A5/"/>
     
   </entry>
   
   <entry>
     <title>读spring源码深度解析</title>
-    <link href="http://zhishuo.info/posts/java/%E8%AF%BBspring%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.html"/>
-    <id>http://zhishuo.info/posts/java/读spring源码深度解析.html</id>
+    <link href="http://www.zhishuo.info/posts/java/%E8%AF%BBspring%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.html"/>
+    <id>http://www.zhishuo.info/posts/java/读spring源码深度解析.html</id>
     <published>2015-11-12T03:35:44.000Z</published>
     <updated>2016-11-03T08:10:39.000Z</updated>
     
@@ -653,19 +653,19 @@
     
     </summary>
     
-      <category term="java" scheme="http://zhishuo.info/categories/java/"/>
+      <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="spring" scheme="http://zhishuo.info/tags/spring/"/>
+      <category term="spring" scheme="http://www.zhishuo.info/tags/spring/"/>
     
-      <category term="spring源码" scheme="http://zhishuo.info/tags/spring%E6%BA%90%E7%A0%81/"/>
+      <category term="spring源码" scheme="http://www.zhishuo.info/tags/spring%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>hexo博客提交到搜索引擎</title>
-    <link href="http://zhishuo.info/posts/hexo/hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E5%88%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E.html"/>
-    <id>http://zhishuo.info/posts/hexo/hexo博客提交到搜索引擎.html</id>
+    <link href="http://www.zhishuo.info/posts/hexo/hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E5%88%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E.html"/>
+    <id>http://www.zhishuo.info/posts/hexo/hexo博客提交到搜索引擎.html</id>
     <published>2014-06-22T02:28:55.000Z</published>
     <updated>2016-11-15T16:16:47.000Z</updated>
     
@@ -692,17 +692,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/categories/hexo/"/>
     
     
-      <category term="搜索引擎" scheme="http://zhishuo.info/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+      <category term="搜索引擎" scheme="http://www.zhishuo.info/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
   </entry>
   
   <entry>
     <title>hexo 搭建 github pages  问题</title>
-    <link href="http://zhishuo.info/posts/hexo/hexo-%E6%90%AD%E5%BB%BA-github-pages--%E9%97%AE%E9%A2%98.html"/>
-    <id>http://zhishuo.info/posts/hexo/hexo-搭建-github-pages--问题.html</id>
+    <link href="http://www.zhishuo.info/posts/hexo/hexo-%E6%90%AD%E5%BB%BA-github-pages--%E9%97%AE%E9%A2%98.html"/>
+    <id>http://www.zhishuo.info/posts/hexo/hexo-搭建-github-pages--问题.html</id>
     <published>2014-05-31T10:45:03.000Z</published>
     <updated>2016-11-15T16:16:07.000Z</updated>
     
@@ -722,19 +722,19 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://zhishuo.info/categories/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://zhishuo.info/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.zhishuo.info/tags/hexo/"/>
     
-      <category term="github pages" scheme="http://zhishuo.info/tags/github-pages/"/>
+      <category term="github pages" scheme="http://www.zhishuo.info/tags/github-pages/"/>
     
   </entry>
   
   <entry>
     <title>我为什么开始写博客</title>
-    <link href="http://zhishuo.info/posts/uncategorized/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2.html"/>
-    <id>http://zhishuo.info/posts/uncategorized/我为什么开始写博客.html</id>
+    <link href="http://www.zhishuo.info/posts/uncategorized/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2.html"/>
+    <id>http://www.zhishuo.info/posts/uncategorized/我为什么开始写博客.html</id>
     <published>2014-05-31T10:14:02.000Z</published>
     <updated>2016-11-03T08:10:39.000Z</updated>
     
@@ -748,7 +748,7 @@
     </summary>
     
     
-      <category term="博客" scheme="http://zhishuo.info/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="博客" scheme="http://www.zhishuo.info/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
