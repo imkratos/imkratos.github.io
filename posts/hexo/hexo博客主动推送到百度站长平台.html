@@ -100,8 +100,7 @@
 自动推送
 sitemap
 
-或者自己手工提交，这里主要说以上三种方式。
-主动推送第一种方式使用了baidu_url_submitter这个工具：首先在hexo根目录安装插件npm install hexo-baidu-url-submit --save然后在根目录_config.yml中增加12345baidu_url_su">
+或者自己手工提交，这里主要说以上三种方式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客主动推送到百度站长平台">
 <meta property="og:url" content="http://www.zhishuo.info/posts/hexo/hexo博客主动推送到百度站长平台.html">
@@ -112,9 +111,8 @@ sitemap
 自动推送
 sitemap
 
-或者自己手工提交，这里主要说以上三种方式。
-主动推送第一种方式使用了baidu_url_submitter这个工具：首先在hexo根目录安装插件npm install hexo-baidu-url-submit --save然后在根目录_config.yml中增加12345baidu_url_su">
-<meta property="og:updated_time" content="2016-11-26T09:35:48.000Z">
+或者自己手工提交，这里主要说以上三种方式。">
+<meta property="og:updated_time" content="2016-11-26T09:39:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客主动推送到百度站长平台">
 <meta name="twitter:description" content="推送百度站长平台百度站长平台有几种方式提交自己的链接
@@ -123,8 +121,7 @@ sitemap
 自动推送
 sitemap
 
-或者自己手工提交，这里主要说以上三种方式。
-主动推送第一种方式使用了baidu_url_submitter这个工具：首先在hexo根目录安装插件npm install hexo-baidu-url-submit --save然后在根目录_config.yml中增加12345baidu_url_su">
+或者自己手工提交，这里主要说以上三种方式。">
 
 
 
@@ -393,15 +390,15 @@ sitemap
 <li>sitemap</li>
 </ol>
 <p>或者自己手工提交，这里主要说以上三种方式。</p>
+<a id="more"></a>
 <h5 id="主动推送"><a href="#主动推送" class="headerlink" title="主动推送"></a>主动推送</h5><p>第一种方式使用了<code>baidu_url_submitter</code>这个工具：<br>首先在hexo根目录安装插件<code>npm install hexo-baidu-url-submit --save</code><br>然后在根目录<code>_config.yml</code>中增加<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">baidu_url_submit:</span></div><div class="line"><span class="attr">  count:</span> <span class="number">1</span> <span class="comment">## 提交的链接数</span></div><div class="line"><span class="attr">  host:</span> www.zhishuo.info <span class="comment">## 在百度站长平台中注册的域名</span></div><div class="line"><span class="attr">  token:</span> token <span class="comment">## 百度站长平台里的token，在链接提交-自动提交-主动推送中有</span></div><div class="line"><span class="attr">  path:</span> baidu_urls.txt <span class="comment">## 这个是会自动生成要推送的url地址</span></div></pre></td></tr></table></figure></p>
 <p><code>count</code>是控制几条数据会生成在<code>baidu_urls.txt</code>中，这里推荐首次使用时填写你所有博客的数量，然后修改为1即可。<br>这里还要注意一个问题，站点配置文件中<code>url: http://www.zhishuo.info</code>这里一定要带上www要不然推送不成功。<br>最后把deploy调整一下，就可以正常使用了。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">  repository:</span> https://github.com/imkratos/imkratos.github.io.git</div><div class="line"><span class="attr">  branch:</span> master</div><div class="line"><span class="attr">  - type:</span> baidu_url_submitter <span class="comment"># baidu push</span></div></pre></td></tr></table></figure></p>
 <ul>
 <li><code>hexo g</code>会生成baidu_urls.txt文件。</li>
-<li><p><code>hexo d</code>会在部署完git代码之后，把新增的url也会推送到百度。</p>
-<h5 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h5><p>由于我是使用的hexo next主题，next主题中自带了此功能，在next主题根目录下<code>_config.yml</code>中找到<code>baidu_push: false</code>改为<code>true</code>即可。</p>
-<h5 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h5><p>此种方式好像被github官方禁止了，博主添加了发现效果不是很明显，需要使用的同学们可自行查找。</p>
-</li>
+<li><code>hexo d</code>会在部署完git代码之后，把新增的url也会推送到百度。</li>
 </ul>
+<h5 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h5><p> 由于我是使用的hexo next主题，next主题中自带了此功能，在next主题根目录下<code>_config.yml</code>中找到<code>baidu_push: false</code>改为<code>true</code>即可。</p>
+<h5 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h5><p> 此种方式好像被github官方禁止了，博主添加了发现效果不是很明显，需要使用的同学们可自行查找。</p>
 <p> <code>baidu_url_submitter</code><a href="http://hui-wang.info/2016/10/23/Hexo%E6%8F%92%E4%BB%B6%E4%B9%8B%E7%99%BE%E5%BA%A6%E4%B8%BB%E5%8A%A8%E6%8F%90%E4%BA%A4%E9%93%BE%E6%8E%A5/" target="_blank" rel="external">作者</a></p>
 
       
