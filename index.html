@@ -292,6 +292,151 @@
             
               
                 
+                <a class="post-title-link" href="/posts/hexo/hexo博客主动推送到百度站长平台.html" itemprop="url">
+                  hexo博客主动推送到百度站长平台
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-26T17:19:09+08:00" content="2016-11-26">
+              2016-11-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/posts/hexo/hexo博客主动推送到百度站长平台.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="posts/hexo/hexo博客主动推送到百度站长平台.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/posts/hexo/hexo博客主动推送到百度站长平台.html" class="leancloud_visitors" data-flag-title="hexo博客主动推送到百度站长平台">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="推送百度站长平台"><a href="#推送百度站长平台" class="headerlink" title="推送百度站长平台"></a>推送百度站长平台</h4><p>百度站长平台有几种方式提交自己的链接</p>
+<ol>
+<li>主动推送(实时)</li>
+<li>自动推送</li>
+<li>sitemap</li>
+</ol>
+<p>或者自己手工提交，这里主要说以上三种方式。</p>
+<h5 id="主动推送"><a href="#主动推送" class="headerlink" title="主动推送"></a>主动推送</h5><p>第一种方式使用了<code>baidu_url_submitter</code>这个工具：<br>首先在hexo根目录安装插件<code>npm install hexo-baidu-url-submit --save</code><br>然后在根目录<code>_config.yml</code>中增加<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">baidu_url_submit:</span></div><div class="line"><span class="attr">  count:</span> <span class="number">1</span> <span class="comment">## 提交的链接数</span></div><div class="line"><span class="attr">  host:</span> www.zhishuo.info <span class="comment">## 在百度站长平台中注册的域名</span></div><div class="line"><span class="attr">  token:</span> token <span class="comment">## 百度站长平台里的token，在链接提交-自动提交-主动推送中有</span></div><div class="line"><span class="attr">  path:</span> baidu_urls.txt <span class="comment">## 这个是会自动生成要推送的url地址</span></div></pre></td></tr></table></figure></p>
+<p><code>count</code>是控制几条数据会生成在<code>baidu_urls.txt</code>中，这里推荐首次使用时填写你所有博客的数量，然后修改为1即可。<br>这里还要注意一个问题，站点配置文件中<code>url: http://www.zhishuo.info</code>这里一定要带上www要不然推送不成功。<br>最后把deploy调整一下，就可以正常使用了。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">  repository:</span> https://github.com/imkratos/imkratos.github.io.git</div><div class="line"><span class="attr">  branch:</span> master</div><div class="line"><span class="attr">  - type:</span> baidu_url_submitter <span class="comment"># baidu push</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>hexo g</code>会生成baidu_urls.txt文件。</li>
+<li><p><code>hexo d</code>会在部署完git代码之后，把新增的url也会推送到百度。</p>
+<h5 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h5><p>由于我是使用的hexo next主题，next主题中自带了此功能，在next主题根目录下<code>_config.yml</code>中找到<code>baidu_push: false</code>改为<code>true</code>即可。</p>
+<h5 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h5><p>此种方式好像被github官方禁止了，博主添加了发现效果不是很明显，需要使用的同学们可自行查找。</p>
+</li>
+</ul>
+<p> <code>baidu_url_submitter</code><a href="http://hui-wang.info/2016/10/23/Hexo%E6%8F%92%E4%BB%B6%E4%B9%8B%E7%99%BE%E5%BA%A6%E4%B8%BB%E5%8A%A8%E6%8F%90%E4%BA%A4%E9%93%BE%E6%8E%A5/" target="_blank" rel="external">作者</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/posts/hexo/hexo博客next主题修改静态资源为CDN.html" itemprop="url">
                   hexo博客next主题修改静态资源为CDN
                 </a>
@@ -1484,141 +1629,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/posts/java/读activeMQ源码(一).html" itemprop="url">
-                  读activeMQ源码(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-09T00:54:49+08:00" content="2015-12-09">
-              2015-12-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/posts/java/读activeMQ源码(一).html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="posts/java/读activeMQ源码(一).html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/posts/java/读activeMQ源码(一).html" class="leancloud_visitors" data-flag-title="读activeMQ源码(一)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近的学习到了消息的阶段，查了下网上的资料，并没有很多具体介绍某一个消息中间件的源码是如何实现，帮自己下了源码想分析下去，希望能坚持。</p>
-<p>源码<a href="https://github.com/apache/activemq.git" target="_blank" rel="external">GIT下载地址</a></p>
-<p>下载完之后如果要导入eclipse 执行mvn eclipse:eclipse 或者导入IDEA mvn idea:idea</p>
-<p>说下个人对rpc和消息的理解:</p>
-<ul>
-<li>这2种方式从架构上就是不同的，rpc一般都是同步的，消息都是异步的，用在不同的场景上。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1664,7 +1674,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1681,7 +1691,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
