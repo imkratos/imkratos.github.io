@@ -76,7 +76,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jdk,jdk源码," />
+  <meta name="keywords" content="jdk源码,jdk,LinkedHashMap," />
 
 
 
@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://ogflhfadi.bkt.clouddn.com/%E5%B0%BE%E8%8A%82%E7%82%B9.png">
 <meta property="og:image" content="http://ogflhfadi.bkt.clouddn.com/%E9%9D%9E%E5%B0%BE%E8%8A%82%E7%82%B9.png">
 <meta property="og:image" content="http://ogflhfadi.bkt.clouddn.com/%E6%9C%80%E5%90%8E%E7%BB%93%E6%9E%84.png">
-<meta property="og:updated_time" content="2016-12-04T14:44:23.000Z">
+<meta property="og:updated_time" content="2016-12-04T14:46:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDK源码之LinkedHashMap">
 <meta name="twitter:description" content="LinkedHashMap使用场景我们都知道平常使用的HashMap是存放无顺序的，但当我们需要有顺序的HashMap的时候呢？所以JDK提供了LinkedHashMap和TreeMap2种有序的Map供我们使用。虽然以前一直都看过说LinkedHashMap是通过链表实现的，但一直没有去源码里探索究竟，今天看了之后原来和自己理解的不完全一样，理论的这些东西，还是自己真正去研究过才有底气。Link">
@@ -393,10 +393,10 @@
 
       
         <h2 id="LinkedHashMap使用场景"><a href="#LinkedHashMap使用场景" class="headerlink" title="LinkedHashMap使用场景"></a>LinkedHashMap使用场景</h2><p>我们都知道平常使用的HashMap是存放无顺序的，但当我们需要有顺序的HashMap的时候呢？所以JDK提供了<code>LinkedHashMap</code>和<code>TreeMap</code>2种有序的Map供我们使用。虽然以前一直都看过说<code>LinkedHashMap</code>是通过链表实现的，但一直没有去源码里探索究竟，今天看了之后原来和自己理解的不完全一样，理论的这些东西，还是自己真正去研究过才有底气。<br><code>LinkedHashMap</code>还支持插入顺序和访问顺序2种方式，默认的就是按照插入顺序排序的，如果需要按照访问顺序排序，在初始化时设置<code>accessOrder</code>为true即可。通过这个访问顺序我们也可以实现简单的LRU算法。</p>
-<h2 id="源码概要"><a href="#源码概要" class="headerlink" title="源码概要"></a>源码概要</h2><p><code>LinkedHashMap</code>继承了<code>HashMap</code>，所以好多方法都是直接用的<code>HashMap</code>中的，在控制底层数据这方面，并没有选择自己去实现，而是通过重写了<code>HashMap</code>中的某些节点方法，来完成相应的功能。    </p>
+<h2 id="源码概要"><a href="#源码概要" class="headerlink" title="源码概要"></a>源码概要</h2><p><code>LinkedHashMap</code>继承了<code>HashMap</code>，所以好多方法都是直接用的<code>HashMap</code>中的，在控制底层数据这方面，并没有选择自己去实现，而是通过重写了<code>HashMap</code>中的某些节点方法，来完成相应的功能。</p>
 <p>比如通过重写一些对节点的操作来实现了自己的链表结构，增，删，改，查，几乎都是用的<code>HashMap</code>中的方法，但是在遍历的时候，以及在需要对象顺序的地方都重写了自己有序实现，这样即保持了功能性，又避免了开发重复的功能。</p>
 <a id="more"></a>
-<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; head;</div><div class="line"></div><div class="line"><span class="keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; tail;</div><div class="line"> </div><div class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> accessOrder;</div></pre></td></tr></table></figure>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; head;</div><div class="line"></div><div class="line"><span class="keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; tail;</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> accessOrder;</div></pre></td></tr></table></figure>
 <p>这里我们可以看到，有两个链表节点，一个头一个尾，是用来维护链表的关系的。<code>accessOrder</code>是用来控制访问顺序的。至于这里变量为什么要用<code>transient</code>来修饰<strong>不知道为什么</strong>，虽然知道这个变量是用来控制在序列化时，该属性不会被写入文件。</p>
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,</span></span></div><div class="line">                        <span class="keyword">float</span> loadFactor,</div><div class="line">                        <span class="keyword">boolean</span> accessOrder) &#123;</div><div class="line">       <span class="keyword">super</span>(initialCapacity, loadFactor);</div><div class="line">       <span class="keyword">this</span>.accessOrder = accessOrder;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <p>除了最基本的构造方法之外，<code>LinkedHashMap</code>还提供了一个可以指定顺序的构造方法，我们可以看到这里构造方法也都是调用的<code>HashMap</code>中的构造方法，<code>accessOrder</code>就是可以指定是按插入排序还是按照访问排序。</p>
@@ -406,7 +406,7 @@
 <p>如果不是首节点，则进入正常的双向链表结构。<br><img src="http://ogflhfadi.bkt.clouddn.com/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E6%AD%A3%E5%B8%B8%E7%BB%93%E6%9E%84.png" alt="正常结构"><br>这里其实就是前驱和后继节点都互相指向，前驱节点也有指向后继节点的连接，后继节点也有指向前驱节点的连接。不向单向链表一样，只是前节点有后节点的连接。<br>每次放入一个新的节点，都会把自己设置为尾节点。所以链表的添加速度还是很快的。</p>
 <h4 id="关于HashMap"><a href="#关于HashMap" class="headerlink" title="关于HashMap"></a>关于HashMap</h4><p>如果大家看过我之前的关于HashMap源码的文章，会发现有几个我没弄懂的地方，没想到是在<code>LinkedHashMap</code>中使用的。<br><code>afterNodeAccess()</code>和<code>afterNodeInsertion()</code>这2个方法，在<code>HashMap</code>中都是空实现，原来是为了在<code>LinkedHashMap</code>中使用。</p>
 <h5 id="afterNodeAccess"><a href="#afterNodeAccess" class="headerlink" title="afterNodeAccess"></a>afterNodeAccess</h5><p>这个方法在HashMap put方法中是如果数据已经存在才会调用的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeAccess</span><span class="params">(Node&lt;K,V&gt; e)</span> </span>&#123; <span class="comment">// move node to last</span></div><div class="line">       LinkedHashMap.Entry&lt;K,V&gt; last;</div><div class="line">       <span class="keyword">if</span> (accessOrder &amp;&amp; (last = tail) != e) &#123;</div><div class="line">           LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">               (LinkedHashMap.Entry&lt;K,V&gt;)e, b = p.before, a = p.after;</div><div class="line">           p.after = <span class="keyword">null</span>;</div><div class="line">           <span class="keyword">if</span> (b == <span class="keyword">null</span>)</div><div class="line">               head = a;</div><div class="line">           <span class="keyword">else</span></div><div class="line">               b.after = a;</div><div class="line">           <span class="keyword">if</span> (a != <span class="keyword">null</span>)</div><div class="line">               a.before = b;</div><div class="line">           <span class="keyword">else</span></div><div class="line">               last = b;</div><div class="line">           <span class="keyword">if</span> (last == <span class="keyword">null</span>)</div><div class="line">               head = p;</div><div class="line">           <span class="keyword">else</span> &#123;</div><div class="line">               p.before = last;</div><div class="line">               last.after = p;</div><div class="line">           &#125;</div><div class="line">           tail = p;</div><div class="line">           ++modCount;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>这里还是比较绕的，让我们来一一的分析。<br><code>if (accessOrder &amp;&amp; (last = tail) != e)</code><br>这个判断的条件是设置的是访问顺序排序，并且当前操作的这个节点是不是最后一个节点。因为在HashMap中几乎所有对节点操作的方法都调用了此方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">               (LinkedHashMap.Entry&lt;K,V&gt;)e, </div><div class="line">               b = p.before, </div><div class="line">               a = p.after;</div><div class="line">           p.after = <span class="keyword">null</span>;</div></pre></td></tr></table></figure></p>
+<p>这里还是比较绕的，让我们来一一的分析。<br><code>if (accessOrder &amp;&amp; (last = tail) != e)</code><br>这个判断的条件是设置的是访问顺序排序，并且当前操作的这个节点是不是最后一个节点。因为在HashMap中几乎所有对节点操作的方法都调用了此方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">               (LinkedHashMap.Entry&lt;K,V&gt;)e,</div><div class="line">               b = p.before,</div><div class="line">               a = p.after;</div><div class="line">           p.after = <span class="keyword">null</span>;</div></pre></td></tr></table></figure></p>
 <p>这个赋值看起来也比较恶心，这里拆开分析下。</p>
 <ul>
 <li>首先，当前操作的节点e赋值给了p，也就是当前操作节点。</li>
@@ -505,9 +505,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/jdk源码/" rel="tag">#jdk源码</a>
+          
             <a href="/tags/jdk/" rel="tag">#jdk</a>
           
-            <a href="/tags/jdk源码/" rel="tag">#jdk源码</a>
+            <a href="/tags/LinkedHashMap/" rel="tag">#LinkedHashMap</a>
           
         </div>
       
@@ -630,7 +632,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
