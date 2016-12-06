@@ -105,9 +105,9 @@
       <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
-    
       <category term="jdk" scheme="http://www.zhishuo.info/tags/jdk/"/>
+    
+      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
     
       <category term="LinkedHashMap" scheme="http://www.zhishuo.info/tags/LinkedHashMap/"/>
     
@@ -152,9 +152,9 @@
       <category term="java" scheme="http://www.zhishuo.info/categories/java/"/>
     
     
-      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
-    
       <category term="jdk" scheme="http://www.zhishuo.info/tags/jdk/"/>
+    
+      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
@@ -397,9 +397,9 @@
     
       <category term="java" scheme="http://www.zhishuo.info/tags/java/"/>
     
-      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
-    
       <category term="jdk" scheme="http://www.zhishuo.info/tags/jdk/"/>
+    
+      <category term="jdk源码" scheme="http://www.zhishuo.info/tags/jdk%E6%BA%90%E7%A0%81/"/>
     
       <category term="CopyOnWriteArrayList" scheme="http://www.zhishuo.info/tags/CopyOnWriteArrayList/"/>
     
