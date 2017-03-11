@@ -311,6 +311,140 @@
             
               
                 
+                <a class="post-title-link" href="/posts/java/读spring源码深度解析(二).html" itemprop="url">
+                  读spring源码深度解析(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-09T17:16:21+08:00" content="2016-03-09">
+              2016-03-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/posts/java/读spring源码深度解析(二).html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="posts/java/读spring源码深度解析(二).html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/posts/java/读spring源码深度解析(二).html" class="leancloud_visitors" data-flag-title="读spring源码深度解析(二)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong><em>不明白</em></strong><br><code>DefaultListableBeanFactory.java</code>中使用了<code>AccessController.doPrivileged()</code>方法，个人理解此方法好像是以当前上下文执行一些代码。<br><code>javaUtilOptionalClass</code>这个属性，是用了JDK8的<code>java.util.Optional</code>,此类是用来避免在Java中出现各种null的问题,但不知道为什么是写在了静态代码块中，而且是以动态加载的方式来加载的。</p>
+<p><strong><em>初始类</em></strong><br>从<code>DefaultListableBeanFactory.java</code>类的getBean()中，开始对整个工厂类进分析。</p>
+<p><img src="http://ogflhfadi.bkt.clouddn.com/DefaultListableBeanFactory.png" alt="类的关系调用图"></p>
+<p>静态导入，如果你多次用到某个工具类的静态方法，可以使用静态导入，这样使代码更整洁美观。<br><code>SimpleAliasRegistry.java</code>这个类实现了对Alias的一些操作。<br><code>BeanFactory.java</code>接口定义一些对Bean的基本操作。<br><code>DefaultSingletonBeanRegistry.java</code>对spring对Bean的一些操作做了各种封装，创建，消毁，依赖等。<br><code>AbstractAutowireCapableBeanFactory.java</code>对<code>AutowireCapableBeanFactory</code>定义的方法进行了实现，此类<br><code>XmlBeanDefinitionReader.java</code>实现了用xml解析资源文件，并且实现了<code>DefaultListableBeanFactory.java</code>类</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/posts/java/读spring源码深度解析(二).html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/posts/java/阅读ActiveMQ源码总结.html" itemprop="url">
                   阅读ActiveMQ源码总结
                 </a>
@@ -1545,7 +1679,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1562,7 +1696,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1631,7 +1765,7 @@
         <div class="copyright" >
   
   &copy;  2014 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
